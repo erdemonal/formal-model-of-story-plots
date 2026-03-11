@@ -10,6 +10,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <https://purl.org/dc/terms/> .
 @prefix vann: <https://purl.org/vocab/vann/> .
+@prefix erdemonal: <https://w3id.org/people/erdemonal/> .
 
 #
 # Actions Ontology
@@ -20,7 +21,7 @@ act: a owl:Ontology ;
      rdfs:label "Actions Ontology"@en ;
      rdfs:comment """An ontology for describing actions in story plot"""@en ;
      dct:created "2026-03-11"^^xsd:date ;
-     dct:creator <https://w3id.org/people/erdemonal/> ;
+     dct:creator erdemonal:me ;
      vann:preferredNamespaceUri "https://purl.org/action/" ;
      vann:preferredNamespacePrefix "act" .
 
