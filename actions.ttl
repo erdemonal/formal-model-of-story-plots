@@ -1,0 +1,387 @@
+#
+# Prefixes
+#
+@prefix act: <https://purl.org/action/> .
+@prefix evnt: <https://purl.org/event/> .
+@prefix loc: <https://purl.org/location/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <https://purl.org/dc/terms/> .
+@prefix vann: <https://purl.org/vocab/vann/> .
+
+#
+# Actions Ontology
+# Defines character actions with agent, patient, instrument, intention, and result
+act: a owl:Ontology ;
+     owl:imports evnt:, loc: ;
+     rdfs:label "Actions Ontology"@en ;
+     rdfs:comment """An ontology for describing actions in story plot"""@en ;
+     dct:created "2026-03-11"^^xsd:date ;
+     dct:creator <https://w3id.org/people/erdemonal/> ;
+     vann:preferredNamespaceUri "https://purl.org/action/" ;
+     vann:preferredNamespacePrefix "act" .
+
+#
+# Classes
+#
+act:Action a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty act:performedBy ;
+        owl:someValuesFrom owl:Thing
+    ] ;
+    rdfs:label "action"@en ;
+    skos:altLabel "deed"@en ;
+    rdfs:comment "An intentional deed. Every action has at least one performer."@en .
+
+act:ViolentAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "violent action"@en ;
+    skos:altLabel "violent deed"@en ;
+    rdfs:comment "An action involving physical violence or force."@en .
+
+act:Attack a owl:Class ;
+    rdfs:subClassOf act:ViolentAction ;
+    rdfs:label "attack"@en ;
+    skos:altLabel "assault"@en ;
+    rdfs:comment "An aggressive action aimed at harming a target."@en .
+
+act:Kill a owl:Class ;
+    rdfs:subClassOf act:ViolentAction ;
+    rdfs:label "kill"@en ;
+    skos:altLabel "slaying"@en ;
+    rdfs:comment "The action of causing the death of another."@en .
+
+act:Defend a owl:Class ;
+    rdfs:subClassOf act:ViolentAction ;
+    rdfs:label "defend"@en ;
+    skos:altLabel "defence"@en ;
+    rdfs:comment "An action of protecting oneself or others from attack."@en .
+
+act:MovementAction a owl:Class ;
+    rdfs:subClassOf act:Action, evnt:MovementEvent ;
+    rdfs:label "movement action"@en ;
+    skos:altLabel "locomotion"@en ;
+    rdfs:comment "An action involving deliberate physical movement."@en .
+
+act:Flee a owl:Class ;
+    rdfs:subClassOf act:MovementAction ;
+    rdfs:label "flee"@en ;
+    skos:altLabel "flight"@en ;
+    rdfs:comment "The action of running away from danger or pursuit."@en .
+
+act:GoTo a owl:Class ;
+    rdfs:subClassOf act:MovementAction ;
+    rdfs:label "go to"@en ;
+    skos:altLabel "travel to"@en ;
+    rdfs:comment "The action of deliberately travelling to a destination."@en .
+
+act:CommunicativeAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "communicative action"@en ;
+    skos:altLabel "speech act"@en ;
+    rdfs:comment "An action involving communication between characters."@en .
+
+act:Speak a owl:Class ;
+    rdfs:subClassOf act:CommunicativeAction ;
+    rdfs:label "speak"@en ;
+    skos:altLabel "utterance"@en ;
+    rdfs:comment "The action of verbal communication."@en .
+
+act:Deceive a owl:Class ;
+    rdfs:subClassOf act:CommunicativeAction ;
+    rdfs:label "deceive"@en ;
+    skos:altLabel "deception"@en ;
+    rdfs:comment "The action of intentionally misleading another character."@en .
+
+act:Reveal a owl:Class ;
+    rdfs:subClassOf act:CommunicativeAction ;
+    rdfs:label "reveal"@en ;
+    skos:altLabel "disclosure"@en ;
+    rdfs:comment "The action of disclosing previously hidden information."@en .
+
+act:Command a owl:Class ;
+    rdfs:subClassOf act:CommunicativeAction ;
+    rdfs:label "command"@en ;
+    skos:altLabel "order"@en ;
+    rdfs:comment "The action of giving an authoritative order."@en .
+
+act:TransferAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "transfer action"@en ;
+    skos:altLabel "transfer"@en ;
+    rdfs:comment "An action involving the transfer of possession."@en .
+
+act:Give a owl:Class ;
+    rdfs:subClassOf act:TransferAction ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty act:hasRecipient ; owl:someValuesFrom owl:Thing ] ;
+    rdfs:label "give"@en ;
+    skos:altLabel "bestowal"@en ;
+    rdfs:comment "The action of voluntarily transferring something to another."@en .
+
+act:Take a owl:Class ;
+    rdfs:subClassOf act:TransferAction ;
+    rdfs:label "take"@en ;
+    skos:altLabel "seizure"@en ;
+    rdfs:comment "The action of acquiring something, possibly by force."@en .
+
+act:CreationAction a owl:Class ;
+    rdfs:subClassOf act:Action ;
+    rdfs:label "creation action"@en ;
+    skos:altLabel "making"@en ;
+    rdfs:comment "An action that produces or transforms something."@en .
+
+act:Forge a owl:Class ;
+    rdfs:subClassOf act:CreationAction ;
+    rdfs:label "forge"@en ;
+    skos:altLabel "smithing"@en ;
+    rdfs:comment "The action of creating or reshaping an object, especially a weapon."@en .
+
+act:Build a owl:Class ;
+    rdfs:subClassOf act:CreationAction ;
+    rdfs:label "build"@en ;
+    skos:altLabel "construction"@en ;
+    rdfs:comment "The action of constructing a structure or settlement."@en .
+
+#
+# Properties
+#
+act:performedBy a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasAgent ;
+    rdfs:domain act:Action ;
+    rdfs:label "performed by"@en ;
+    skos:altLabel "done by"@en ;
+    rdfs:comment "The agent who intentionally performs the action."@en .
+
+act:hasTarget a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasPatient ;
+    rdfs:domain act:Action ;
+    rdfs:label "has target"@en ;
+    skos:altLabel "directed at"@en ;
+    rdfs:comment "The entity that the action is directed towards."@en .
+
+act:hasInstrument a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasFactor ;
+    rdfs:domain act:Action ;
+    rdfs:label "has instrument"@en ;
+    skos:altLabel "using"@en ;
+    rdfs:comment "An object used to perform the action (e.g. a sword)."@en .
+
+act:hasIntention a owl:ObjectProperty ;
+    rdfs:domain act:Action ;
+    rdfs:label "has intention"@en ;
+    skos:altLabel "aims to"@en ;
+    rdfs:comment "The goal or purpose behind the action."@en .
+
+act:hasResult a owl:ObjectProperty ;
+    rdfs:domain act:Action ;
+    rdfs:range evnt:Event ;
+    rdfs:label "has result"@en ;
+    skos:altLabel "results in"@en ;
+    rdfs:comment "The event or state that results from the action."@en .
+
+act:hasRecipient a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain act:TransferAction ;
+    rdfs:label "has recipient"@en ;
+    skos:altLabel "received by"@en ;
+    rdfs:comment "The character who receives something in a transfer action."@en .
+
+#
+# Axioms
+#
+# A violent action cannot simultaneously be a communicative action
+act:ViolentAction owl:disjointWith act:CommunicativeAction .
+# A transfer action is disjoint from a creation action
+act:TransferAction owl:disjointWith act:CreationAction .
+# Movement vs violent
+act:MovementAction owl:disjointWith act:ViolentAction .
+# Communicative vs movement
+act:CommunicativeAction owl:disjointWith act:MovementAction .
+# Transfer vs communicative
+act:TransferAction owl:disjointWith act:CommunicativeAction .
+# Attack ⊓ Defend = ⊥ 
+act:Attack owl:disjointWith act:Defend .
+# Give ⊓ Take = ⊥
+act:Give owl:disjointWith act:Take .
+# Speak ⊓ Deceive = ⊥ 
+act:Speak owl:disjointWith act:Deceive .
+# Forge ⊓ Build = ⊥ 
+act:Forge owl:disjointWith act:Build .
+
+
+# A Kill is precisely a violent action whose result is a death, targeting exactly one entity
+act:Kill owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        act:ViolentAction
+        [ a owl:Restriction ;
+          owl:onProperty act:hasResult ;
+          owl:someValuesFrom evnt:Death ]
+        [ a owl:Restriction ;
+          owl:onProperty act:hasTarget ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing ]
+    )
+] .
+
+# Flee ≡ MovementAction ⊓ ∃hasIntention.Escape
+act:Escape a owl:Class ;
+    rdfs:label "escape"@en ;
+    skos:altLabel "evasion"@en ;
+    rdfs:comment "The intention of getting away from danger."@en .
+
+act:Flee owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        act:MovementAction
+        [ a owl:Restriction ;
+          owl:onProperty act:hasIntention ;
+          owl:someValuesFrom act:Escape ]
+    )
+] .
+
+
+# A deception is a communicative action intended to mislead
+act:MisleadingIntention a owl:Class ;
+    rdfs:label "misleading intention"@en ;
+    skos:altLabel "intent to deceive"@en ;
+    rdfs:comment "The intention of making another believe something false."@en .
+
+act:Deceive owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        act:CommunicativeAction
+        [ a owl:Restriction ;
+          owl:onProperty act:hasIntention ;
+          owl:someValuesFrom act:MisleadingIntention ]
+    )
+] .
+
+
+
+# A Command has exactly 1 performer 
+act:Command rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:performedBy ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+# A Give action transfers exactly 1 item 
+act:Give rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasInstrument ;
+    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+# A Command has exactly 1 target 
+act:Command rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+
+
+# An Attack always has a target
+act:Attack rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:someValuesFrom owl:Thing
+] .
+
+# A Defend always has something being protected 
+act:Defend rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:someValuesFrom owl:Thing
+] .
+
+# A CreationAction always produces something (physical product, not event result)
+act:CreationAction rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasProduct ;
+    owl:someValuesFrom owl:Thing
+] .
+
+# Build produces a structure (Place)
+act:Build rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasProduct ;
+    owl:someValuesFrom loc:Place
+] .
+
+# Forge produces a physical object
+act:Forge rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasProduct ;
+    owl:someValuesFrom owl:Thing
+] .
+
+# A Take action has a target 
+act:Take rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:someValuesFrom owl:Thing
+] .
+
+# A Reveal discloses something 
+act:Reveal rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasResult ;
+    owl:someValuesFrom evnt:Discovery
+] .
+
+
+
+# MovementAction targets only places 
+act:MovementAction rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:allValuesFrom loc:Place
+] .
+
+# CommunicativeAction targets only characters
+act:CommunicativeAction rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasTarget ;
+    owl:allValuesFrom [
+        a owl:Class ;
+        owl:complementOf loc:Place
+    ]
+] .
+
+# A Kill can only result in a Death 
+act:Kill rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty act:hasResult ;
+    owl:allValuesFrom evnt:Death
+] .
+
+
+act:hasTarget a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+act:hasInstrument a owl:IrreflexiveProperty .
+act:hasRecipient a owl:IrreflexiveProperty .
+act:hasIntention a owl:IrreflexiveProperty, owl:FunctionalProperty .
+
+act:performedBy owl:propertyDisjointWith act:hasInstrument .
+act:hasTarget owl:propertyDisjointWith act:hasInstrument .
+act:performedBy owl:propertyDisjointWith act:hasRecipient .
+
+
+# If agent performs action and action has result, agent causes result
+act:causesByAction a owl:ObjectProperty ;
+    owl:propertyChainAxiom ( [ owl:inverseOf act:performedBy ] act:hasResult ) ;
+    rdfs:label "causes by action"@en ;
+    skos:altLabel "brings about"@en ;
+    rdfs:comment "Inferred: if an agent performs an action with a result, the agent indirectly causes that result."@en .
+
+
+# hasResult is also a causal relation
+act:hasResult rdfs:subPropertyOf evnt:causes .
