@@ -1,0 +1,392 @@
+#
+# Prefixes
+#
+@prefix to: <https://purl.org/to/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <https://purl.org/dc/terms/> .
+@prefix vann: <https://purl.org/vocab/vann/> .
+@prefix erdemonal: <https://w3id.org/people/erdemonal/> .
+
+
+#
+# Temporal Ontology with Allen's temporal algebra
+# Defines instants, intervals, and the 13 Allen temporal relations
+#
+to: a owl:Ontology ;
+    rdfs:label "Temporal Ontology"@en ;
+    rdfs:comment """An ontology for temporal entities and Allen's temporal algebra."""@en ;
+    dct:created "2026-02-25"^^xsd:date ;
+    dct:creator erdemonal:me ;
+    vann:preferredNamespaceUri "https://purl.org/to/" ;
+    vann:preferredNamespacePrefix "to" .
+
+#
+# Classes
+#
+to:TemporalEntity a owl:Class ;
+    rdfs:label "temporal entity"@en ;
+    skos:altLabel "time entity"@en ;
+    rdfs:comment "A thing that exists in time."@en .
+
+to:Instant a owl:Class ;
+    rdfs:subClassOf to:TemporalEntity ;
+    owl:disjointWith to:Interval ;
+    rdfs:label "instant"@en ;
+    skos:altLabel "time point"@en ;
+    rdfs:comment "A single point in time with zero duration."@en .
+
+to:Interval a owl:Class ;
+    rdfs:subClassOf to:TemporalEntity ;
+    rdfs:label "interval"@en ;
+    skos:altLabel "time span"@en ;
+    rdfs:comment "A continuous extent of time with nonzero duration."@en .
+
+to:FiniteInterval a owl:Class ;
+    rdfs:subClassOf to:Interval, to:StartingInterval, to:EndingInterval ;
+    owl:disjointWith to:InfiniteInterval ;
+    rdfs:label "finite interval"@en ;
+    skos:altLabel "bounded interval"@en ;
+    rdfs:comment "An interval with both a starting and ending instant."@en .
+
+to:InfiniteInterval a owl:Class ;
+    rdfs:subClassOf to:Interval ;
+    rdfs:label "infinite interval"@en ;
+    skos:altLabel "unbounded interval"@en ;
+    rdfs:comment "An interval extending infinitely in at least one direction."@en .
+
+to:StartingInterval a owl:Class ;
+    rdfs:subClassOf to:Interval ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty to:startsAt ;
+        owl:someValuesFrom to:Instant
+    ] ;
+    rdfs:label "starting interval"@en ;
+    skos:altLabel "begins with"@en ;
+    rdfs:comment "An interval with a defined starting instant."@en .
+
+to:EndingInterval a owl:Class ;
+    rdfs:subClassOf to:Interval ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty to:endsAt ;
+        owl:someValuesFrom to:Instant
+    ] ;
+    rdfs:label "ending interval"@en ;
+    skos:altLabel "ending point"@en ;
+    rdfs:comment "An interval with a defined ending instant."@en .
+
+to:EternalInterval a owl:Class ;
+    rdfs:subClassOf to:InfiniteInterval ;
+    rdfs:label "eternal interval"@en ;
+    skos:altLabel "everlasting interval"@en ;
+    rdfs:comment "An interval extending infinitely in both directions."@en .
+
+to:FiniteInterval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:startsAt ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass to:Instant
+] .
+
+to:FiniteInterval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:endsAt ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass to:Instant
+] .
+
+#
+# Properties
+#
+to:occursBefore a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain to:Instant ;
+    rdfs:range to:Instant ;
+    owl:propertyDisjointWith to:occursSimultaneouslyTo ;
+    rdfs:label "occurs before"@en ;
+    skos:altLabel "earlier than"@en ;
+    rdfs:comment "Instant strictly before another."@en .
+
+to:occursAfter a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf to:occursBefore ;
+    rdfs:domain to:Instant ;
+    rdfs:range to:Instant ;
+    rdfs:label "occurs after"@en ;
+    skos:altLabel "later than"@en ;
+    rdfs:comment "Inverse of occursBefore."@en .
+
+to:occursSimultaneouslyTo a owl:ObjectProperty, owl:SymmetricProperty, owl:ReflexiveProperty, owl:TransitiveProperty ;
+    rdfs:domain to:Instant ;
+    rdfs:range to:Instant ;
+    rdfs:label "occurs simultaneously to"@en ;
+    skos:altLabel "at same time as"@en ;
+    rdfs:comment "Two instants at the same time."@en .
+
+to:hasInstant a owl:ObjectProperty ;
+    rdfs:domain to:Interval ;
+    rdfs:range to:Instant ;
+    rdfs:label "has instant"@en ;
+    skos:altLabel "at instant"@en ;
+    rdfs:comment "Links an interval to an instant that falls within or bounds it."@en .
+
+to:startsAt a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:subPropertyOf to:hasInstant ;
+    rdfs:domain to:Interval ;
+    rdfs:range to:Instant ;
+    rdfs:label "starts at"@en ;
+    skos:altLabel "beginning point"@en ;
+    rdfs:comment "The unique starting instant."@en .
+
+to:endsAt a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:subPropertyOf to:hasInstant ;
+    rdfs:domain to:Interval ;
+    rdfs:range to:Instant ;
+    rdfs:label "ends at"@en ;
+    skos:altLabel "ending point"@en ;
+    rdfs:comment "The unique ending instant."@en .
+
+to:occursDuring a owl:ObjectProperty ;
+    rdfs:domain to:Instant ;
+    rdfs:range to:Interval ;
+    rdfs:label "occurs during"@en ;
+    skos:altLabel "within timeframe of"@en ;
+    rdfs:comment "An instant falls within the extent of an interval."@en .
+
+to:hasDateTime a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain to:Instant ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "has date time"@en ;
+    skos:altLabel "dateTime value"@en ;
+    rdfs:comment "The calendar date and time of an instant."@en .
+
+to:hasDuration a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain to:Interval ;
+    rdfs:range xsd:duration ;
+    rdfs:label "has duration"@en ;
+    skos:altLabel "time length"@en ;
+    rdfs:comment "The length of time spanned by an interval."@en .
+
+to:intervalRelation a owl:ObjectProperty ;
+    rdfs:domain to:Interval ;
+    rdfs:range to:Interval ;
+    rdfs:label "interval relation"@en ;
+    skos:altLabel "Allen relation"@en ;
+    rdfs:comment "General temporal relation between two intervals."@en .
+
+to:before a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "before"@en ;
+    skos:altLabel "precedes"@en ;
+    rdfs:comment "X ends before Y starts."@en .
+
+to:after a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf to:before ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "after"@en ;
+    skos:altLabel "follows"@en ;
+    rdfs:comment "Inverse of before. X starts after Y ends."@en .
+
+to:meets a owl:ObjectProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    owl:propertyDisjointWith to:before ;
+    rdfs:label "meets"@en ;
+    skos:altLabel "immediately before"@en ;
+    rdfs:comment "X ends exactly when Y starts."@en .
+
+to:metBy a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    owl:inverseOf to:meets ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "met by"@en ;
+    skos:altLabel "immediately after"@en ;
+    rdfs:comment "Inverse of meets. X starts exactly when Y ends."@en .
+
+to:overlaps a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    owl:propertyDisjointWith to:before, to:meets ;
+    rdfs:label "overlaps"@en ;
+    skos:altLabel "partially before"@en ;
+    rdfs:comment "X starts before Y, ends after Y starts but before Y ends."@en .
+
+to:overlappedBy a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    owl:inverseOf to:overlaps ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "overlapped by"@en ;
+    skos:altLabel "partially after"@en ;
+    rdfs:comment "Inverse of overlaps. Y starts before X, ends after X starts but before X ends."@en .
+
+to:starts a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "starts"@en ;
+    skos:altLabel "begins with"@en ;
+    rdfs:comment "X starts at same time as Y but ends before Y ends."@en .
+
+to:startedBy a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    owl:inverseOf to:starts ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "started by"@en ;
+    skos:altLabel "begun by"@en ;
+    rdfs:comment "Inverse of starts. X starts when Y starts but Y ends after X ends."@en .
+
+to:during a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "during"@en ;
+    skos:altLabel "contained in"@en ;
+    rdfs:comment "X occurs entirely within Y."@en .
+
+to:containsInterval a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf to:during ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "contains interval"@en ;
+    skos:altLabel "temporally contains"@en ;
+    rdfs:comment "Inverse of during. X entirely contains Y."@en .
+
+to:finishes a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "finishes"@en ;
+    skos:altLabel "ends with"@en ;
+    rdfs:comment "X ends at same time as Y but starts after Y starts."@en .
+
+to:finishedBy a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    owl:inverseOf to:finishes ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "finished by"@en ;
+    skos:altLabel "ended by"@en ;
+    rdfs:comment "Inverse of finishes. X ends when Y ends but Y starts before X starts."@en .
+
+to:equals a owl:ObjectProperty, owl:SymmetricProperty, owl:ReflexiveProperty, owl:TransitiveProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "equals"@en ;
+    skos:altLabel "same time as"@en ;
+    rdfs:comment "Same temporal extent."@en .
+
+
+to:precedes a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:subPropertyOf to:intervalRelation ;
+    rdfs:label "precedes"@en ;
+    skos:altLabel "happens before"@en ;
+    rdfs:comment "X ends before or when Y starts."@en .
+
+to:before rdfs:subPropertyOf to:precedes .
+to:meets rdfs:subPropertyOf to:precedes .
+
+to:precededBy a owl:ObjectProperty, owl:TransitiveProperty ;
+    owl:inverseOf to:precedes ;
+    rdfs:label "preceded by"@en ;
+    skos:altLabel "happens after"@en ;
+    rdfs:comment "Inverse of precedes. X starts after or when Y ends."@en .
+
+#
+# Axioms
+#
+# FiniteInterval ≡ Interval ⊓ ∃startsAt.Instant ⊓ ∃endsAt.Instant
+#
+to:FiniteInterval owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        to:Interval
+        [ a owl:Restriction ;
+          owl:onProperty to:startsAt ;
+          owl:someValuesFrom to:Instant ]
+        [ a owl:Restriction ;
+          owl:onProperty to:endsAt ;
+          owl:someValuesFrom to:Instant ]
+    )
+] .
+
+# EternalInterval ≡ InfiniteInterval ⊓ ¬StartingInterval ⊓ ¬EndingInterval
+to:EternalInterval owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        to:InfiniteInterval
+        [ a owl:Class ; owl:complementOf to:StartingInterval ]
+        [ a owl:Class ; owl:complementOf to:EndingInterval ]
+    )
+] .
+
+# StartingInterval ≡ Interval ⊓ ∃startsAt.Instant
+# A starting interval is any interval that has a beginning
+to:StartingInterval owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        to:Interval
+        [ a owl:Restriction ;
+          owl:onProperty to:startsAt ;
+          owl:someValuesFrom to:Instant ]
+    )
+] .
+
+
+# An Interval's instants are only Instants (not other intervals)
+to:Interval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:hasInstant ;
+    owl:allValuesFrom to:Instant
+] .
+
+# startsAt and endsAt range only to Instants
+to:FiniteInterval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:startsAt ;
+    owl:allValuesFrom to:Instant
+] .
+
+
+
+# A FiniteInterval has exactly 1 start instant and exactly 1 end instant
+to:FiniteInterval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:startsAt ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass to:Instant
+] .
+to:FiniteInterval rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty to:endsAt ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass to:Instant
+] .
+
+
+
+# StartingInterval and EndingInterval are not disjoint
+# Making them disjoint would make FiniteInterval unsatisfiable
+
+# EternalInterval ⊓ FiniteInterval = ⊥
+to:EternalInterval owl:disjointWith to:FiniteInterval .
+
+
+# The start instant cannot be the end instant
+to:startsAt owl:propertyDisjointWith to:endsAt .
+
+# before is incompatible with during, starts, finishes, overlaps, equals
+# to:before owl:propertyDisjointWith to:during .
+# to:before owl:propertyDisjointWith to:starts .
+# to:before owl:propertyDisjointWith to:finishes .
+# to:before owl:propertyDisjointWith to:overlaps .
+# to:before owl:propertyDisjointWith to:equals .
+# during implies neither before nor after
+# to:during owl:propertyDisjointWith to:after .
+# to:during owl:propertyDisjointWith to:meets .
+# meets is disjoint with during and overlaps
+# to:meets owl:propertyDisjointWith to:during .
+# to:meets owl:propertyDisjointWith to:overlaps .
+# equals is disjoint with before/after
+# to:equals owl:propertyDisjointWith to:after .
+#
+# The aforementioned commented axioms are disabled to preserve OWL 2 DL compatibility.
+# OWL 2 DL restricts property disjointness and AllDisjointProperties to simple properties, whereas
+# several Allen relations here are non-simple.
+
+# all 13 Allen relations are pairwise disjoint
+# [] a owl:AllDisjointProperties ;
+#     owl:members ( to:before to:after to:meets to:metBy
+#                   to:overlaps to:overlappedBy to:starts to:startedBy
+#                   to:during to:containsInterval to:finishes to:finishedBy
+#                   to:equals ) .
+
+to:startsAt a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+to:endsAt a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+to:hasInstant a owl:AsymmetricProperty, owl:IrreflexiveProperty .

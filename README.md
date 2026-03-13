@@ -12,3 +12,5 @@ The ontology consists of seven modules (`place.ttl`, `rcc.ttl`, `time.ttl`, `soc
 [Protégé](https://protege.stanford.edu/) with the [HermiT reasoner](http://www.hermit-reasoner.com/) was used to verify [OWL 2 DL](https://www.w3.org/TR/owl2-overview/) consistency of all modules.
 [RDFox](https://www.oxfordsemantic.tech/rdfox) was used as a triple store to load all modules together and run SPARQL queries against the combined knowledge base, for validating that competency questions are answerable.
 [WIDOCO](https://github.com/dgarijo/Widoco) was used to generate HTML documentation from the ontology annotations.
+
+Some axioms are documented as commented triples in the ontology files, because they would violate OWL 2 DL global restrictions on non-simple properties and are therefore omitted.
