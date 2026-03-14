@@ -1,0 +1,332 @@
+#
+# Prefixes
+#
+@prefix soc: <https://purl.org/social/relations/> .
+@prefix loc: <https://purl.org/location/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <https://purl.org/dc/terms/> .
+@prefix vann: <https://purl.org/vocab/vann/> .
+@prefix erdemonal: <https://w3id.org/people/erdemonal/> .
+
+#
+# Social Relations Ontology
+# Defines social relationships between characters in stories
+#
+soc: a owl:Ontology ;
+     owl:imports loc: ;
+     rdfs:label "Social Relations Ontology"@en ;
+     rdfs:comment """An ontology defining social relationships between characters."""@en ;
+     dct:created "2026-03-14"^^xsd:date ;
+     dct:creator erdemonal:me ;
+     vann:preferredNamespaceUri "https://purl.org/social/relations/" ;
+     vann:preferredNamespacePrefix "soc" .
+
+#
+# Classes
+#
+soc:SocialRole a owl:Class ;
+    rdfs:label "social role"@en ;
+    skos:altLabel "role"@en ;
+    rdfs:comment "A role that a character plays in a social context."@en .
+
+soc:PoliticalRole a owl:Class ;
+    rdfs:subClassOf soc:SocialRole ;
+    rdfs:label "political role"@en ;
+    skos:altLabel "political position"@en ;
+    rdfs:comment "A social role involving governance or political authority."@en .
+
+soc:MilitaryRole a owl:Class ;
+    rdfs:subClassOf soc:SocialRole ;
+    rdfs:label "military role"@en ;
+    skos:altLabel "military position"@en ;
+    rdfs:comment "A social role related to military or combat functions."@en .
+
+soc:King a owl:Class ;
+    rdfs:subClassOf soc:PoliticalRole ;
+    owl:disjointWith soc:Servant ;
+    rdfs:label "king"@en ;
+    skos:altLabel "monarch"@en ;
+    rdfs:comment "A ruler of a realm or kingdom."@en .
+
+soc:Chieftain a owl:Class ;
+    rdfs:subClassOf soc:PoliticalRole ;
+    rdfs:label "chieftain"@en ;
+    skos:altLabel "chief"@en ;
+    rdfs:comment "The leader of a people or tribe."@en .
+
+soc:Servant a owl:Class ;
+    rdfs:subClassOf soc:SocialRole ;
+    rdfs:label "servant"@en ;
+    skos:altLabel "attendant"@en ;
+    rdfs:comment "One who serves another."@en .
+
+soc:Outlaw a owl:Class ;
+    rdfs:subClassOf soc:SocialRole ;
+    rdfs:label "outlaw"@en ;
+    skos:altLabel "fugitive"@en ;
+    rdfs:comment "A person who lives outside the law."@en .
+
+soc:Ally a owl:Class ;
+    rdfs:subClassOf soc:SocialRole ;
+    owl:disjointWith soc:Outlaw ;
+    rdfs:label "ally"@en ;
+    skos:altLabel "companion"@en ;
+    rdfs:comment "One allied with others"@en .
+
+soc:Leader a owl:Class ;
+    rdfs:label "leader"@en ;
+    skos:altLabel "ruler"@en ;
+    rdfs:comment "A leader is either a King or a Chieftain."@en .
+
+soc:NonLeader a owl:Class ;
+    owl:complementOf soc:Leader ;
+    rdfs:label "non-leader"@en ;
+    skos:altLabel "non-ruler"@en ;
+    rdfs:comment "Anyone who is not a Leader."@en .
+
+soc:RoyalServant a owl:Class ;
+    owl:intersectionOf (
+        soc:Servant
+        [ a owl:Restriction ;
+          owl:onProperty soc:served ;
+          owl:someValuesFrom soc:King ]
+    ) ;
+    rdfs:label "royal servant"@en ;
+    skos:altLabel "royal attendant"@en ;
+    rdfs:comment "A servant who serves a king."@en .
+
+soc:EmotionalValence a owl:Class ;
+    owl:oneOf ( soc:positive soc:negative soc:ambivalent ) ;
+    rdfs:label "emotional valence"@en ;
+    skos:altLabel "sentiment type"@en ;
+    rdfs:comment "Enumerated class: {positive, negative, ambivalent}."@en .
+
+soc:positive a owl:NamedIndividual ; rdfs:label "positive"@en ; rdfs:comment "A positive emotional valence."@en  ;
+    skos:altLabel "positive sentiment"@en .
+soc:negative a owl:NamedIndividual ; rdfs:label "negative"@en ; rdfs:comment "A negative emotional valence."@en  ;
+    skos:altLabel "negative sentiment"@en .
+soc:ambivalent a owl:NamedIndividual ; rdfs:label "ambivalent"@en ; rdfs:comment "An ambivalent or mixed emotional valence."@en  ;
+    skos:altLabel "mixed sentiment"@en .
+
+soc:SuicidalCharacter a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty soc:committedSuicide ;
+        owl:hasSelf true
+    ] ;
+    rdfs:label "suicidal character"@en ;
+    skos:altLabel "self slain character"@en ;
+    rdfs:comment "A character who committed suicide."@en .
+
+#
+# Properties
+#
+soc:hasEmotionalRelationWith a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:label "has emotional relation with"@en ;
+    skos:altLabel "feels towards"@en ;
+    rdfs:comment "General emotional relationship between two characters."@en .
+
+soc:loved a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:hasEmotionalRelationWith ;
+    rdfs:label "loved"@en ;
+    skos:altLabel "had love for"@en ;
+    rdfs:comment "Character had feelings of love towards another."@en .
+
+soc:hated a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:hasEmotionalRelationWith ;
+    rdfs:label "hated"@en ;
+    skos:altLabel "had hatred for"@en ;
+    rdfs:comment "Character had hatred towards another."@en .
+
+soc:feared a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:hasEmotionalRelationWith ;
+    rdfs:label "feared"@en ;
+    skos:altLabel "had fear of"@en ;
+    rdfs:comment "Character feared another character."@en .
+
+soc:hasFriend a owl:ObjectProperty,
+    owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:subPropertyOf soc:hasEmotionalRelationWith ;
+    rdfs:label "has friend"@en ;
+    skos:altLabel "is a friend of"@en ;
+    rdfs:comment "Mutual friendship. Symmetric."@en .
+
+soc:wasTheBestFriendOf a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf soc:hasFriend ;
+    rdfs:label "was the best friend of"@en ;
+    skos:altLabel "closest companion of"@en ;
+    rdfs:comment "Particularly close friendship."@en .
+
+soc:isAnEnemyOf a owl:ObjectProperty, owl:SymmetricProperty ;
+    owl:propertyDisjointWith soc:hasFriend ;
+    rdfs:label "is an enemy of"@en ;
+    skos:altLabel "foe of"@en ;
+    rdfs:comment "Antagonistic relation."@en .
+
+soc:mutuallyLoved a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf soc:loved ;
+    rdfs:label "mutually loved"@en ;
+    skos:altLabel "reciprocally loved"@en ;
+    rdfs:comment "Two characters loved each other."@en .
+
+soc:served a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:label "served"@en ;
+    skos:altLabel "was in service of"@en ;
+    rdfs:comment "Character served another as a subordinate."@en .
+
+soc:wasServedBy a owl:ObjectProperty ;
+    owl:inverseOf soc:served ;
+    rdfs:label "was served by"@en ;
+    skos:altLabel "had as servant"@en ;
+    rdfs:comment "Inverse of served."@en .
+
+soc:wasTheKingOf a owl:ObjectProperty, owl:AsymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:label "was the king of"@en ;
+    skos:altLabel "reigned over"@en ;
+    rdfs:range loc:Place ;
+    rdfs:comment "Character was the ruler of a place."@en .
+
+soc:wasTheChieftainOf a owl:ObjectProperty ;
+    rdfs:label "was the chieftain of"@en ;
+    skos:altLabel "led as chief"@en ;
+    rdfs:range loc:Place ;
+    rdfs:comment "Character was the chieftain of a people or place."@en .
+
+soc:ruled a owl:ObjectProperty ;
+    owl:equivalentProperty soc:wasTheKingOf ;
+    rdfs:label "ruled"@en ;
+    skos:altLabel "governed"@en ;
+    rdfs:comment "Equivalent to wasTheKingOf."@en .
+
+soc:livedIn a owl:ObjectProperty ;
+    rdfs:label "lived in"@en ;
+    skos:altLabel "dwelt in"@en ;
+    rdfs:range loc:Place ;
+    rdfs:comment "Character lived in a place during some period."@en .
+
+soc:wasHeldCaptiveIn a owl:ObjectProperty ;
+    rdfs:subPropertyOf soc:livedIn ;
+    rdfs:label "was held captive in"@en ;
+    skos:altLabel "imprisoned in"@en ;
+    rdfs:range loc:Place ;
+    rdfs:comment "Character was imprisoned."@en .
+
+soc:killed a owl:ObjectProperty, owl:IrreflexiveProperty, owl:AsymmetricProperty ;
+    rdfs:label "killed"@en ;
+    skos:altLabel "slew"@en ;
+    rdfs:comment "X killed Y."@en .
+
+soc:wasKilledBy a owl:ObjectProperty ;
+    owl:inverseOf soc:killed ;
+    rdfs:label "was killed by"@en ;
+    skos:altLabel "slain by"@en ;
+    rdfs:comment "Inverse of killed."@en .
+
+soc:committedSuicide a owl:ObjectProperty ;
+    rdfs:label "committed suicide"@en ;
+    skos:altLabel "took own life"@en ;
+    rdfs:comment "Self killing."@en .
+
+soc:cursed a owl:ObjectProperty ;
+    rdfs:label "cursed"@en ;
+    skos:altLabel "placed a curse on"@en ;
+    rdfs:comment "Character placed a curse upon another."@en .
+
+soc:hypnotised a owl:ObjectProperty ;
+    rdfs:label "hypnotised"@en ;
+    skos:altLabel "cast a spell on"@en ;
+    rdfs:comment "Character placed another under a spell."@en .
+
+soc:isAKinsmanOf a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "is a kinsman of"@en ;
+    skos:altLabel "kin of"@en ;
+    rdfs:comment "Kinship or blood relation."@en .
+
+soc:isMarriedTo a owl:ObjectProperty ;
+    a owl:SymmetricProperty, owl:IrreflexiveProperty ;
+    rdfs:label "is married to"@en ;
+    skos:altLabel "wed to"@en ;
+    rdfs:comment "Marriage relationship."@en .
+
+soc:hasValence a owl:ObjectProperty ;
+    a owl:FunctionalProperty ;
+    rdfs:range soc:EmotionalValence ;
+    rdfs:label "has valence"@en ;
+    skos:altLabel "has sentiment"@en ;
+    rdfs:comment "Assigns an emotional valence. Functional."@en .
+
+#
+# Axioms
+#
+soc:PositiveRelation a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty soc:hasValence ;
+        owl:hasValue soc:positive
+    ] ;
+    rdfs:label "positive relation"@en ;
+    skos:altLabel "positive bond"@en ;
+    rdfs:comment "A relation with positive emotional valence (owl:hasValue construct)."@en .
+
+
+soc:Leader owl:equivalentClass [
+    a owl:Class ;
+    owl:unionOf ( soc:King soc:Chieftain )
+] .
+
+soc:livedIn owl:propertyChainAxiom ( soc:served soc:wasTheKingOf ) .
+
+soc:King rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty soc:wasServedBy ;
+    owl:allValuesFrom soc:Servant
+] .
+
+soc:King rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty soc:wasTheKingOf ;
+    owl:someValuesFrom loc:Place
+] .
+
+soc:Outlaw rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty soc:isAnEnemyOf ;
+    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+
+soc:isAnEnemyOf a owl:IrreflexiveProperty .
+soc:served a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+soc:hasFriend owl:propertyDisjointWith soc:isAnEnemyOf .
+soc:Ally owl:disjointWith soc:Outlaw .
+
+soc:Servant owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        soc:SocialRole
+        [ a owl:Restriction ;
+          owl:onProperty soc:served ;
+          owl:someValuesFrom owl:Thing ]
+    )
+] .
+
+soc:Chieftain rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty soc:wasTheChieftainOf ;
+    owl:someValuesFrom loc:Place
+] .
+
+
+soc:killed owl:propertyDisjointWith soc:served .
+soc:wasServedBy owl:propertyDisjointWith soc:isAnEnemyOf .
+
+[] a owl:AllDisjointProperties ;
+    owl:members ( soc:loved soc:hated soc:feared ) .
