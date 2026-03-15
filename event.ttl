@@ -1,0 +1,466 @@
+#
+# Prefixes
+#
+@prefix evnt: <https://purl.org/event/> .
+@prefix to: <https://purl.org/to/> .
+@prefix loc: <https://purl.org/location/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <https://purl.org/dc/terms/> .
+@prefix vann: <https://purl.org/vocab/vann/> .
+@prefix erdemonal: <https://w3id.org/people/erdemonal/> .
+
+#
+# Event Ontology for Story Plot Modelling
+# Defines event types and their relationships to characters, places, and time
+#
+evnt: a owl:Ontology ;
+      owl:imports to:, loc: ;
+      rdfs:label "Event Ontology"@en ;
+      rdfs:comment """An ontology for describing events in story plots."""@en ;
+      dct:created "2026-03-15"^^xsd:date ;
+     dct:creator erdemonal:me ;
+     vann:preferredNamespaceUri "https://purl.org/event/" ;
+     vann:preferredNamespacePrefix "evnt" .
+
+#
+# Classes
+#
+evnt:Event a owl:Class ;
+    rdfs:subClassOf to:FiniteInterval ;
+    rdfs:label "event"@en ;
+    skos:altLabel "occurrence"@en ;
+    rdfs:comment """A spatio-temporal occurrence involving participants at places.
+        Every event is a finite temporal interval."""@en .
+
+evnt:LifeEvent a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "life event"@en ;
+    skos:altLabel "life occurrence"@en ;
+    rdfs:comment "A significant moment in a character's life."@en .
+
+evnt:Birth a owl:Class ;
+    rdfs:subClassOf evnt:LifeEvent ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:begets ;
+        owl:someValuesFrom owl:Thing
+    ] ;
+    rdfs:label "birth"@en ;
+    skos:altLabel "nativity"@en ;
+    rdfs:comment "A character being born. Every birth begets at least one character."@en .
+
+evnt:Death a owl:Class ;
+    rdfs:subClassOf evnt:LifeEvent ;
+    owl:disjointWith evnt:Birth ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasVictim ;
+        owl:someValuesFrom owl:Thing
+    ] ;
+    rdfs:label "death"@en ;
+    skos:altLabel "demise"@en ;
+    rdfs:comment "A character dying. Every death has at least one victim."@en .
+
+evnt:Suicide a owl:Class ;
+    rdfs:subClassOf evnt:Death ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasAgent ;
+        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onClass owl:Thing
+    ] ;
+    rdfs:label "suicide"@en ;
+    skos:altLabel "self-killing"@en ;
+    rdfs:comment "A death where the victim is also the agent. At most one agent."@en .
+
+evnt:Murder a owl:Class ;
+    rdfs:subClassOf evnt:Death ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasAgent ;
+        owl:someValuesFrom owl:Thing
+    ] ;
+    rdfs:label "murder"@en ;
+    skos:altLabel "homicide"@en ;
+    rdfs:comment "A death caused intentionally by another. Has at least one agent."@en .
+
+evnt:Marriage a owl:Class ;
+    rdfs:subClassOf evnt:LifeEvent ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasParticipant ;
+        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+        owl:onClass owl:Thing
+    ] ;
+    rdfs:label "marriage"@en ;
+    skos:altLabel "wedding"@en ;
+    rdfs:comment "Two characters getting married. Involves exactly 2 participants."@en .
+
+evnt:ConflictEvent a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "conflict event"@en ;
+    skos:altLabel "clash"@en ;
+    rdfs:comment "An event involving antagonism or violence."@en .
+
+evnt:Battle a owl:Class ;
+    rdfs:subClassOf evnt:ConflictEvent ;
+    rdfs:label "battle"@en ;
+    skos:altLabel "armed conflict"@en ;
+    rdfs:comment "A large scale violent confrontation."@en .
+
+evnt:War a owl:Class ;
+    rdfs:subClassOf evnt:ConflictEvent ;
+    rdfs:label "war"@en ;
+    skos:altLabel "prolonged conflict"@en ;
+    rdfs:comment "A prolonged conflict with multiple battles."@en .
+
+evnt:Duel a owl:Class ;
+    rdfs:subClassOf evnt:ConflictEvent ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasParticipant ;
+        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+        owl:onClass owl:Thing
+    ] ;
+    rdfs:label "duel"@en ;
+    skos:altLabel "single combat"@en ;
+    rdfs:comment "A fight between exactly two combatants."@en .
+
+evnt:Siege a owl:Class ;
+    rdfs:subClassOf evnt:ConflictEvent ;
+    rdfs:label "siege"@en ;
+    skos:altLabel "blockade"@en ;
+    rdfs:comment "A military blockade of a city or fortress."@en .
+
+evnt:MovementEvent a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "movement event"@en ;
+    skos:altLabel "movement"@en ;
+    rdfs:comment "An event involving physical movement of characters between places."@en .
+
+evnt:Travel a owl:Class ;
+    rdfs:subClassOf evnt:MovementEvent ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasOrigin ;
+        owl:someValuesFrom loc:Place
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty evnt:hasDestination ;
+        owl:someValuesFrom loc:Place
+    ] ;
+    rdfs:label "travel"@en ;
+    skos:altLabel "journey"@en ;
+    rdfs:comment "A journey. Every travel has origin and destination."@en .
+
+evnt:Flight a owl:Class ;
+    rdfs:subClassOf evnt:MovementEvent ;
+    rdfs:label "flight"@en ;
+    skos:altLabel "escape"@en ;
+    rdfs:comment "Characters flee from danger."@en .
+
+evnt:Exile a owl:Class ;
+    rdfs:subClassOf evnt:MovementEvent ;
+    rdfs:label "exile"@en ;
+    skos:altLabel "banishment"@en ;
+    rdfs:comment "Forced departure from homeland."@en .
+
+evnt:Captivity a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "captivity"@en ;
+    skos:altLabel "imprisonment"@en ;
+    rdfs:comment "A character is held prisoner."@en .
+
+evnt:SocialEvent a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "social event"@en ;
+    skos:altLabel "social gathering"@en ;
+    rdfs:comment "An event involving social interaction between characters."@en .
+
+evnt:Meeting a owl:Class ;
+    rdfs:subClassOf evnt:SocialEvent ;
+    rdfs:label "meeting"@en ;
+    skos:altLabel "encounter"@en ;
+    rdfs:comment "An encounter or gathering of characters."@en .
+
+evnt:Coronation a owl:Class ;
+    rdfs:subClassOf evnt:SocialEvent ;
+    rdfs:label "coronation"@en ;
+    skos:altLabel "crowning ceremony"@en ;
+    rdfs:comment "A ceremony of crowning a ruler."@en .
+
+evnt:Feast a owl:Class ;
+    rdfs:subClassOf evnt:SocialEvent ;
+    rdfs:label "feast"@en ;
+    skos:altLabel "banquet"@en ;
+    rdfs:comment "A large celebratory meal or banquet."@en .
+
+evnt:Council a owl:Class ;
+    rdfs:subClassOf evnt:SocialEvent ;
+    rdfs:label "council"@en ;
+    skos:altLabel "deliberation"@en ;
+    rdfs:comment "A formal meeting for deliberation or the reach of a consensus."@en .
+
+evnt:Trial a owl:Class ;
+    rdfs:subClassOf evnt:SocialEvent ;
+    rdfs:label "trial"@en ;
+    skos:altLabel "judgement"@en ;
+    rdfs:comment "A judicial examination or hearing."@en .
+
+evnt:Curse a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "curse"@en ;
+    skos:altLabel "malediction"@en ;
+    rdfs:comment "A supernatural imprecation bringing misfortune."@en .
+
+evnt:Prophecy a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "prophecy"@en ;
+    skos:altLabel "foretelling"@en ;
+    rdfs:comment "A prediction of future events, often supernatural."@en .
+
+evnt:Enchantment a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "enchantment"@en ;
+    skos:altLabel "spell"@en ;
+    rdfs:comment "A magical spell or charm placed on a character."@en .
+
+evnt:Discovery a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "discovery"@en ;
+    skos:altLabel "revelation"@en ;
+    rdfs:comment "An event where something hidden is found or revealed."@en .
+
+evnt:Betrayal a owl:Class ;
+    rdfs:subClassOf evnt:Event ;
+    rdfs:label "betrayal"@en ;
+    skos:altLabel "treachery"@en ;
+    rdfs:comment "An act of disloyalty or treachery."@en .
+
+#
+# Properties
+#
+
+evnt:hasParticipant a owl:ObjectProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has participant"@en ;
+    skos:altLabel "involves"@en ;
+    rdfs:comment "An entity that takes part in the event."@en .
+
+evnt:hasAgent a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has agent"@en ;
+    skos:altLabel "done by"@en ;
+    rdfs:comment "The entity that intentionally causes or performs the event."@en .
+
+evnt:hasPatient a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has patient"@en ;
+    skos:altLabel "affects"@en ;
+    rdfs:comment "The entity affected by the event."@en .
+
+evnt:hasVictim a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasPatient ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has victim"@en ;
+    skos:altLabel "harms"@en ;
+    rdfs:comment "The entity that suffers harm in the event."@en .
+
+evnt:hasWitness a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has witness"@en ;
+    skos:altLabel "observed by"@en ;
+    rdfs:comment "An entity that observes the event without acting."@en .
+
+evnt:begets a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain evnt:Birth ;
+    rdfs:label "begets"@en ;
+    skos:altLabel "brings forth"@en ;
+    rdfs:comment "The character brought into existence by a birth event."@en .
+
+evnt:isBegottenIn a owl:ObjectProperty ;
+    owl:inverseOf evnt:begets ;
+    rdfs:domain owl:Thing ;
+    rdfs:range evnt:Birth ;
+    rdfs:label "is begotten in"@en ;
+    rdfs:comment "Inverse of begets. Links a character to the birth event that brings them into existence."@en .
+
+evnt:hasTraveller a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:hasParticipant ;
+    rdfs:domain evnt:Travel ;
+    rdfs:label "has traveller"@en ;
+    skos:altLabel "travelled by"@en ;
+    rdfs:comment "The character who undertakes the travel."@en .
+
+evnt:occursAt a owl:ObjectProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:range loc:Place ;
+    rdfs:label "occurs at"@en ;
+    skos:altLabel "takes place at"@en ;
+    rdfs:comment "The place where the event occurs."@en .
+
+evnt:hasOrigin a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:occursAt ;
+    rdfs:domain evnt:MovementEvent ;
+    rdfs:range loc:Place ;
+    rdfs:label "has origin"@en ;
+    skos:altLabel "departs from"@en ;
+    rdfs:comment "The starting place of a movement event."@en .
+
+evnt:hasDestination a owl:ObjectProperty ;
+    rdfs:subPropertyOf evnt:occursAt ;
+    rdfs:domain evnt:MovementEvent ;
+    rdfs:range loc:Place ;
+    rdfs:label "has destination"@en ;
+    skos:altLabel "arrives at"@en ;
+    rdfs:comment "The ending place of a movement event."@en .
+
+evnt:precedes a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:subPropertyOf to:precedes ;
+    rdfs:domain evnt:Event ;
+    rdfs:range evnt:Event ;
+    rdfs:label "precedes"@en ;
+    skos:altLabel "comes before"@en ;
+    rdfs:comment "This event occurs before another event."@en .
+
+evnt:causes a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:range evnt:Event ;
+    rdfs:label "causes"@en ;
+    skos:altLabel "leads to"@en ;
+    rdfs:comment "This event causally leads to another event."@en .
+
+evnt:isCausedBy a owl:ObjectProperty ;
+    owl:inverseOf evnt:causes ;
+    rdfs:label "is caused by"@en ;
+    skos:altLabel "results from"@en ;
+    rdfs:comment "Inverse of causes. This event results from another."@en .
+
+evnt:hasSubEvent a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:range evnt:Event ;
+    rdfs:label "has sub-event"@en ;
+    skos:altLabel "contains event"@en ;
+    rdfs:comment "A smaller event that occurs as part of this one."@en .
+
+evnt:isSubEventOf a owl:ObjectProperty ;
+    owl:inverseOf evnt:hasSubEvent ;
+    rdfs:label "is sub-event of"@en ;
+    skos:altLabel "part of event"@en ;
+    rdfs:comment "This event is part of a larger event."@en .
+
+evnt:hasCause a owl:ObjectProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "has cause"@en ;
+    skos:altLabel "caused by"@en ;
+    rdfs:comment "An entity involved as a contributing cause in the event."@en .
+
+evnt:creates a owl:ObjectProperty ;
+    rdfs:domain evnt:Event ;
+    rdfs:label "creates"@en ;
+    skos:altLabel "results in"@en ;
+    rdfs:comment "An entity produced or created by the event."@en .
+
+#
+# Axioms
+#
+evnt:isSubEventOf rdfs:subPropertyOf to:during .
+evnt:causes rdfs:subPropertyOf evnt:precedes .
+evnt:Murder owl:disjointWith evnt:Suicide .
+evnt:Murder owl:disjointWith evnt:Birth .
+evnt:Birth owl:disjointWith evnt:Marriage .
+evnt:ConflictEvent owl:disjointWith evnt:SocialEvent .
+evnt:MovementEvent owl:disjointWith evnt:ConflictEvent .
+evnt:Curse owl:disjointWith evnt:Prophecy .
+evnt:Betrayal owl:disjointWith evnt:Meeting .
+
+evnt:Murder owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        evnt:Death
+        [ a owl:Restriction ;
+          owl:onProperty evnt:hasAgent ;
+          owl:someValuesFrom owl:Thing ]
+    )
+] .
+
+evnt:War owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        evnt:ConflictEvent
+        [ a owl:Restriction ;
+          owl:onProperty evnt:hasSubEvent ;
+          owl:someValuesFrom evnt:Battle ]
+    )
+] .
+
+evnt:Travel owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        evnt:MovementEvent
+        [ a owl:Restriction ;
+          owl:onProperty evnt:hasOrigin ;
+          owl:someValuesFrom loc:Place ]
+        [ a owl:Restriction ;
+          owl:onProperty evnt:hasDestination ;
+          owl:someValuesFrom loc:Place ]
+    )
+] .
+
+# A Birth occurs only at Places
+evnt:Birth rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:occursAt ;
+    owl:allValuesFrom loc:Place
+] .
+
+# Siege occurs only at fortified locations
+evnt:Siege rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:occursAt ;
+    owl:allValuesFrom loc:Settlement
+] .
+
+
+evnt:hasOrigin owl:propertyDisjointWith evnt:hasDestination .
+
+evnt:Suicide rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasVictim ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+evnt:Coronation rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasAgent ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass owl:Thing
+] .
+
+evnt:causes a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+evnt:precedes a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+evnt:hasSubEvent a owl:AsymmetricProperty, owl:IrreflexiveProperty .
+evnt:hasAgent a owl:IrreflexiveProperty .
+evnt:occursAt a owl:IrreflexiveProperty .
+evnt:hasAgent owl:propertyDisjointWith evnt:hasWitness .
+
+evnt:Event rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:occursAt ;
+    owl:someValuesFrom loc:Place
+] .
+
+evnt:Event rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty evnt:hasParticipant ;
+    owl:someValuesFrom owl:Thing
+] .

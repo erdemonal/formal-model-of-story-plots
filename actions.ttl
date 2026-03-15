@@ -21,6 +21,7 @@ act: a owl:Ontology ;
      rdfs:label "Actions Ontology"@en ;
      rdfs:comment """An ontology for describing actions in story plot"""@en ;
      dct:created "2026-03-11"^^xsd:date ;
+     dct:modified "2026-03-15"^^xsd:date ;
      dct:creator erdemonal:me ;
      vann:preferredNamespaceUri "https://purl.org/action/" ;
      vann:preferredNamespacePrefix "act" .
@@ -166,7 +167,7 @@ act:hasTarget a owl:ObjectProperty ;
     rdfs:comment "The entity that the action is directed towards."@en .
 
 act:hasInstrument a owl:ObjectProperty ;
-    rdfs:subPropertyOf evnt:hasFactor ;
+    rdfs:subPropertyOf evnt:hasCause ;
     rdfs:domain act:Action ;
     rdfs:label "has instrument"@en ;
     skos:altLabel "using"@en ;
@@ -298,17 +299,17 @@ act:Defend rdfs:subClassOf [
 # A CreationAction always produces something 
 act:CreationAction rdfs:subClassOf [
     a owl:Restriction ;
-    owl:onProperty evnt:hasProduct ;
+    owl:onProperty evnt:creates ;
     owl:someValuesFrom owl:Thing
 ] .
 
-# Build ≡ CreationAction ⊓ ∃hasProduct.Place
+# Build ≡ CreationAction ⊓ ∃creates.Place
 act:Build owl:equivalentClass [
     a owl:Class ;
     owl:intersectionOf (
         act:CreationAction
         [ a owl:Restriction ;
-          owl:onProperty evnt:hasProduct ;
+          owl:onProperty evnt:creates ;
           owl:someValuesFrom loc:Place ]
     )
 ] .
@@ -316,7 +317,7 @@ act:Build owl:equivalentClass [
 # Forge produces a physical object
 act:Forge rdfs:subClassOf [
     a owl:Restriction ;
-    owl:onProperty evnt:hasProduct ;
+    owl:onProperty evnt:creates ;
     owl:someValuesFrom owl:Thing
 ] .
 

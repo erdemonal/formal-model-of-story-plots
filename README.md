@@ -9,7 +9,9 @@ The ontology consists of seven modules (`place.ttl`, `rcc.ttl`, `time.ttl`, `soc
 ## Tools
 
 [Claude Opus 4.6](https://www.anthropic.com/claude/opus) was used as the AI tool in the project. It was used for ontology design discussions, and logical consistency.
-[Protégé](https://protege.stanford.edu/) with the [HermiT reasoner](http://www.hermit-reasoner.com/) was used to verify [OWL 2 DL](https://www.w3.org/TR/owl2-overview/) consistency of all modules.
-[RDFox](https://www.oxfordsemantic.tech/rdfox) was used as a triple store to load all modules together and run SPARQL queries against the combined knowledge base, for validating that competency questions are answerable.
+
+[Protégé](https://protege.stanford.edu/) with the [HermiT reasoner](http://www.hermit-reasoner.com/) was used to verify consistency of all modules.
+
+[RDFox](https://www.oxfordsemantic.tech/rdfox) was used as a triple store to load all modules together and run SPARQL queries against the knowledge base, for validating that competency questions are answerable.
 [WIDOCO](https://github.com/dgarijo/Widoco) was used to generate HTML documentation from the ontology annotations.
 
