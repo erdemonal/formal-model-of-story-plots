@@ -8,10 +8,12 @@
 @prefix act: <https://w3id.org/narn/action/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <https://purl.org/dc/terms/> .
 @prefix vann: <https://purl.org/vocab/vann/> .
 @prefix erdemonal: <https://w3id.org/people/erdemonal/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
 
 narn: a owl:Ontology ;
     rdfs:label "Formal Model of Story Plots"@en ;
