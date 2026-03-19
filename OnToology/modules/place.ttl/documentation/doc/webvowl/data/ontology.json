@@ -15,7 +15,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Location Ontology Specification"
+      "en": "Narn Location Ontology"
     },
     "comments": {
       "en": "An ontology for defining types of places and spatial relationships."
@@ -62,9 +62,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Location Ontology Specification"
+      "en": "Narn Location Ontology"
     },
     "description": {
       "en": "An ontology for defining types of places and spatial relationships."

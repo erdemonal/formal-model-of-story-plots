@@ -17,7 +17,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Event Ontology Specification"
+      "en": "Narn Event Ontology"
     },
     "comments": {
       "en": "An ontology for describing events in story plots."
@@ -64,9 +64,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Event Ontology Specification"
+      "en": "Narn Event Ontology"
     },
     "description": {
       "en": "An ontology for describing events in story plots."

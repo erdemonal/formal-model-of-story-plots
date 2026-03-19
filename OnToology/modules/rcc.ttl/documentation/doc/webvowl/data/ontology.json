@@ -16,7 +16,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn RCC Ontology Specification"
+      "en": "Narn RCC Ontology"
     },
     "comments": {
       "en": "An OWL encoding of the Region Connection Calculus."
@@ -63,9 +63,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn RCC Ontology Specification"
+      "en": "Narn RCC Ontology"
     },
     "description": {
       "en": "An OWL encoding of the Region Connection Calculus."

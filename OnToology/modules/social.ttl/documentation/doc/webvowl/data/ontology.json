@@ -16,7 +16,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Social Ontology Specification"
+      "en": "Narn Social Ontology"
     },
     "comments": {
       "en": "An ontology defining social relationships between characters in stories."
@@ -63,9 +63,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Social Ontology Specification"
+      "en": "Narn Social Ontology"
     },
     "description": {
       "en": "An ontology defining social relationships between characters in stories."

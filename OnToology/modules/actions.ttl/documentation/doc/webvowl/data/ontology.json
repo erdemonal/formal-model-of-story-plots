@@ -18,7 +18,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Action Ontology Specification"
+      "en": "Narn Action Ontology"
     },
     "comments": {
       "en": "An ontology for describing actions in story plots."
@@ -65,9 +65,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Action Ontology Specification"
+      "en": "Narn Action Ontology"
     },
     "description": {
       "en": "An ontology for describing actions in story plots."

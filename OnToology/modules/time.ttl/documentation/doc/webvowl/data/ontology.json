@@ -15,7 +15,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Time Ontology Specification"
+      "en": "Narn Time Ontology"
     },
     "comments": {
       "en": "An ontology for temporal entities and Allen's temporal algebra."
@@ -62,9 +62,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Time Ontology Specification"
+      "en": "Narn Time Ontology"
     },
     "description": {
       "en": "An ontology for temporal entities and Allen's temporal algebra."
