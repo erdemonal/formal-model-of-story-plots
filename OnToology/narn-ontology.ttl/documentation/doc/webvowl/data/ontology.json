@@ -21,7 +21,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Ontology Specification"
+      "en": "The Narn Ontology"
     },
     "comments": {
       "en": "An OWL ontology for modeling story plots and narrative structures. It provides a formal vocabulary to represent characters, locations, events, actions, and temporal relations within a narrative."
@@ -39,7 +39,7 @@
         {
           "identifier": "created",
           "language": "en",
-          "value": "16 March 2026",
+          "value": "17 March 2026",
           "type": "label"
         }
       ],
@@ -55,7 +55,7 @@
         {
           "identifier": "modified",
           "language": "en",
-          "value": "17 March 2026",
+          "value": "19 March 2026",
           "type": "label"
         }
       ],
@@ -68,9 +68,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Ontology Specification"
+      "en": "The Narn Ontology"
     },
     "description": {
       "en": "An OWL ontology for modeling story plots and narrative structures. It provides a formal vocabulary to represent characters, locations, events, actions, and temporal relations within a narrative."
@@ -171,11 +171,11 @@
       "type": "owl:Class"
     },
     {
-      "id": "182",
+      "id": "113",
       "type": "owl:Class"
     },
     {
-      "id": "113",
+      "id": "182",
       "type": "owl:Class"
     },
     {
@@ -227,7 +227,7 @@
       "type": "owl:Class"
     },
     {
-      "id": "223",
+      "id": "222",
       "type": "owl:Class"
     },
     {
@@ -267,7 +267,7 @@
       "type": "rdfs:Datatype"
     },
     {
-      "id": "264",
+      "id": "266",
       "type": "owl:Thing"
     },
     {
@@ -335,7 +335,7 @@
       "type": "owl:Thing"
     },
     {
-      "id": "266",
+      "id": "264",
       "type": "owl:Thing"
     },
     {
@@ -395,7 +395,7 @@
       "type": "owl:Class"
     },
     {
-      "id": "243",
+      "id": "238",
       "type": "owl:Class"
     },
     {
@@ -463,7 +463,7 @@
       "type": "owl:Class"
     },
     {
-      "id": "222",
+      "id": "224",
       "type": "owl:Class"
     },
     {
@@ -483,11 +483,11 @@
       "type": "owl:Class"
     },
     {
-      "id": "256",
+      "id": "137",
       "type": "owl:Class"
     },
     {
-      "id": "137",
+      "id": "256",
       "type": "owl:Class"
     },
     {
@@ -923,8 +923,8 @@
         "en": "The action of intentionally misleading another character."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "86",
       "superClasses": [
@@ -1038,8 +1038,8 @@
         "en": "The action of disclosing previously hidden information."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "98",
       "superClasses": [
@@ -1239,8 +1239,8 @@
         "en": "A city built underground, within caves or excavated halls."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "138"
     },
@@ -1274,8 +1274,8 @@
         "en": "Categorizes individuals who hold no sovereign or primary leadership authority."
       },
       "attributes": [
-        "external",
-        "complement"
+        "complement",
+        "external"
       ],
       "id": "147",
       "complement": [
@@ -1396,8 +1396,8 @@
         "en": "Identifies an individual bound to the service and assistance of another figure."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "52",
       "superClasses": [
@@ -1559,43 +1559,6 @@
       ]
     },
     {
-      "iri": "https://w3id.org/narn/event/Birth",
-      "baseIri": "https://w3id.org/narn/event",
-      "instances": 0,
-      "annotations": {
-        "altLabel": [
-          {
-            "identifier": "altLabel",
-            "language": "en",
-            "value": "nativity",
-            "type": "label"
-          }
-        ],
-        "example": [
-          {
-            "identifier": "example",
-            "language": "en",
-            "value": "The birth of Túrin takes place in Dor-lómin.",
-            "type": "label"
-          }
-        ]
-      },
-      "label": {
-        "IRI-based": "Birth",
-        "en": "birth"
-      },
-      "comment": {
-        "en": "The coming into existence of a character."
-      },
-      "attributes": [
-        "external"
-      ],
-      "id": "182",
-      "superClasses": [
-        "119"
-      ]
-    },
-    {
       "iri": "https://w3id.org/narn/social/King",
       "baseIri": "https://w3id.org/narn/social",
       "instances": 0,
@@ -1664,7 +1627,44 @@
       "attributes": [
         "external"
       ],
-      "id": "183"
+      "id": "182"
+    },
+    {
+      "iri": "https://w3id.org/narn/event/Birth",
+      "baseIri": "https://w3id.org/narn/event",
+      "instances": 0,
+      "annotations": {
+        "altLabel": [
+          {
+            "identifier": "altLabel",
+            "language": "en",
+            "value": "nativity",
+            "type": "label"
+          }
+        ],
+        "example": [
+          {
+            "identifier": "example",
+            "language": "en",
+            "value": "The birth of Túrin takes place in Dor-lómin.",
+            "type": "label"
+          }
+        ]
+      },
+      "label": {
+        "IRI-based": "Birth",
+        "en": "birth"
+      },
+      "comment": {
+        "en": "The coming into existence of a character."
+      },
+      "attributes": [
+        "external"
+      ],
+      "id": "183",
+      "superClasses": [
+        "119"
+      ]
     },
     {
       "iri": "https://w3id.org/narn/to/InfiniteInterval",
@@ -2014,8 +2014,8 @@
         "en": "A moment where a character makes a critical discovery about an identity or situation."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "186",
       "superClasses": [
@@ -2128,7 +2128,7 @@
       "attributes": [
         "external"
       ],
-      "id": "223",
+      "id": "222",
       "superClasses": [
         "29"
       ]
@@ -2311,8 +2311,8 @@
         "en": "A temporally unbounded interval extending infinitely into both the past and the future."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "142",
       "superClasses": [
@@ -2412,7 +2412,7 @@
     {
       "iri": "http://www.w3.org/2002/07/owl#Thing",
       "baseIri": "http://owl2vowl.de",
-      "id": "264",
+      "id": "266",
       "label": {
         "undefined": "Thing"
       }
@@ -2503,8 +2503,8 @@
         "en": "The action of causing the death of another."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "246",
       "superClasses": [
@@ -2794,8 +2794,8 @@
         "en": "An interval bounded by a distinct starting instant but lacking a defined ending point."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "134",
       "superClasses": [
@@ -2887,7 +2887,7 @@
     {
       "iri": "http://www.w3.org/2002/07/owl#Thing",
       "baseIri": "http://owl2vowl.de",
-      "id": "266",
+      "id": "264",
       "label": {
         "undefined": "Thing"
       }
@@ -2925,8 +2925,8 @@
         "en": "The action of running away from danger or pursuit."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "351",
       "superClasses": [
@@ -3080,8 +3080,8 @@
         "en": "A death caused intentionally by another."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "221",
       "superClasses": [
@@ -3195,8 +3195,8 @@
         "en": "Designates a servant specifically sworn to the service of a royal monarch."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "354"
     },
@@ -3306,7 +3306,7 @@
       "attributes": [
         "external"
       ],
-      "id": "243",
+      "id": "238",
       "superClasses": [
         "119"
       ]
@@ -3377,7 +3377,7 @@
       },
       "subClasses": [
         "221",
-        "222"
+        "224"
       ],
       "comment": {
         "en": "The death of a character."
@@ -3696,8 +3696,8 @@
         "en": "The final unravelling of the plot."
       },
       "attributes": [
-        "equivalent",
-        "external"
+        "external",
+        "equivalent"
       ],
       "id": "364"
     },
@@ -3856,8 +3856,8 @@
         "en": "A prolonged conflict composed of multiple battles."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "156",
       "superClasses": [
@@ -3967,7 +3967,7 @@
       "attributes": [
         "external"
       ],
-      "id": "222",
+      "id": "224",
       "superClasses": [
         "232"
       ]
@@ -4133,43 +4133,6 @@
       ]
     },
     {
-      "iri": "https://w3id.org/narn/action/Give",
-      "baseIri": "https://w3id.org/narn/action",
-      "instances": 0,
-      "annotations": {
-        "altLabel": [
-          {
-            "identifier": "altLabel",
-            "language": "en",
-            "value": "bestowal",
-            "type": "label"
-          }
-        ],
-        "example": [
-          {
-            "identifier": "example",
-            "language": "en",
-            "value": "Beleg gives Anglachel to Túrin to rescue him.",
-            "type": "label"
-          }
-        ]
-      },
-      "label": {
-        "IRI-based": "Give",
-        "en": "give"
-      },
-      "comment": {
-        "en": "The action of voluntarily transferring something to another."
-      },
-      "attributes": [
-        "external"
-      ],
-      "id": "256",
-      "superClasses": [
-        "32"
-      ]
-    },
-    {
       "iri": "https://w3id.org/narn/to/EndingInterval",
       "baseIri": "https://w3id.org/narn/to",
       "instances": 0,
@@ -4207,6 +4170,43 @@
       "id": "137",
       "superClasses": [
         "53"
+      ]
+    },
+    {
+      "iri": "https://w3id.org/narn/action/Give",
+      "baseIri": "https://w3id.org/narn/action",
+      "instances": 0,
+      "annotations": {
+        "altLabel": [
+          {
+            "identifier": "altLabel",
+            "language": "en",
+            "value": "bestowal",
+            "type": "label"
+          }
+        ],
+        "example": [
+          {
+            "identifier": "example",
+            "language": "en",
+            "value": "Beleg gives Anglachel to Túrin to rescue him.",
+            "type": "label"
+          }
+        ]
+      },
+      "label": {
+        "IRI-based": "Give",
+        "en": "give"
+      },
+      "comment": {
+        "en": "The action of voluntarily transferring something to another."
+      },
+      "attributes": [
+        "external"
+      ],
+      "id": "256",
+      "superClasses": [
+        "32"
       ]
     },
     {
@@ -4586,9 +4586,9 @@
         "en": "life event"
       },
       "subClasses": [
-        "243",
+        "238",
         "232",
-        "182"
+        "183"
       ],
       "comment": {
         "en": "A significant moment in a character's life."
@@ -4708,8 +4708,8 @@
         "en": "The outcome; how the conflict is resolved."
       },
       "attributes": [
-        "equivalent",
-        "external"
+        "external",
+        "equivalent"
       ],
       "id": "196",
       "superClasses": [
@@ -4977,8 +4977,8 @@
         "en": "A journey. Every travel has origin and destination."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "92",
       "superClasses": [
@@ -5277,8 +5277,8 @@
         "en": "A territory under the rule of a king or sovereign authority."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "131",
       "superClasses": [
@@ -5312,7 +5312,7 @@
         "en": "violent action"
       },
       "subClasses": [
-        "223",
+        "222",
         "261",
         "246"
       ],
@@ -5442,8 +5442,8 @@
         "en": "A bounded temporal interval defined by both a distinct starting instant and a distinct ending instant."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "136",
       "superClasses": [
@@ -5593,8 +5593,8 @@
         "en": "A protagonist whose flaw leads to their downfall."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "38",
       "superClasses": [
@@ -5709,8 +5709,8 @@
         "en": "A general classification encompassing sovereign figures such as a King or a Chieftain."
       },
       "attributes": [
-        "union",
-        "external"
+        "external",
+        "union"
       ],
       "id": "148"
     },
@@ -5821,8 +5821,8 @@
         "en": "The action of constructing a structure or settlement."
       },
       "attributes": [
-        "intersection",
-        "external"
+        "external",
+        "intersection"
       ],
       "id": "47",
       "superClasses": [
@@ -6188,12 +6188,12 @@
       "type": "rdfs:SubClassOf"
     },
     {
-      "id": "220",
-      "type": "owl:disjointWith"
-    },
-    {
       "id": "58",
       "type": "owl:objectProperty"
+    },
+    {
+      "id": "223",
+      "type": "owl:disjointWith"
     },
     {
       "id": "225",
@@ -6213,14 +6213,18 @@
     },
     {
       "id": "235",
-      "type": "owl:allValuesFrom"
+      "type": "owl:disjointWith"
     },
     {
       "id": "236",
       "type": "owl:disjointWith"
     },
     {
-      "id": "238",
+      "id": "237",
+      "type": "owl:disjointWith"
+    },
+    {
+      "id": "239",
       "type": "owl:objectProperty"
     },
     {
@@ -6228,16 +6232,12 @@
       "type": "owl:objectProperty"
     },
     {
-      "id": "239",
+      "id": "240",
       "type": "owl:objectProperty"
     },
     {
-      "id": "240",
-      "type": "owl:disjointWith"
-    },
-    {
       "id": "241",
-      "type": "owl:disjointWith"
+      "type": "owl:allValuesFrom"
     },
     {
       "id": "242",
@@ -6441,7 +6441,7 @@
     },
     {
       "id": "314",
-      "type": "owl:someValuesFrom"
+      "type": "owl:allValuesFrom"
     },
     {
       "id": "316",
@@ -6449,7 +6449,7 @@
     },
     {
       "id": "317",
-      "type": "owl:allValuesFrom"
+      "type": "owl:someValuesFrom"
     },
     {
       "id": "179",
@@ -6612,7 +6612,7 @@
       "type": "owl:objectProperty"
     },
     {
-      "id": "315",
+      "id": "318",
       "type": "owl:objectProperty"
     },
     {
@@ -6840,7 +6840,7 @@
       "type": "owl:objectProperty"
     },
     {
-      "id": "318",
+      "id": "315",
       "type": "owl:objectProperty"
     },
     {
@@ -7056,8 +7056,8 @@
         "en": "The primary interval concludes either strictly prior to or exactly at the commencement of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "17"
@@ -7097,8 +7097,8 @@
         "en": "An object used to perform the action (e.g. a sword)."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "irreflexive"
       ],
       "id": "23"
@@ -7137,9 +7137,9 @@
         "en": "Stricter form of isAPartOf where boundaries do not touch."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -7179,9 +7179,9 @@
         "en": "Both intervals share identical ending instants while the primary interval commences strictly after the secondary interval begins."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -7218,9 +7218,9 @@
         "en": "Indicates a fatal action where the subject directly causes the death of the object."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "36"
@@ -7326,8 +7326,8 @@
         "en": "A topological temporal relation between two distinct intervals."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "19"
     },
@@ -7391,8 +7391,8 @@
         "en": "A character or entity involved in the conflict."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "72"
     },
@@ -7445,9 +7445,9 @@
         "en": "Links a story to its structural units."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "81"
@@ -7483,8 +7483,8 @@
         "en": "The enclosure of a specific instant strictly within the temporal boundaries of an interval."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "83"
     },
@@ -7529,8 +7529,8 @@
         "en": "Inverse of causes. This event results from another."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "89"
     },
@@ -7568,8 +7568,8 @@
         "en": "The character who undertakes the travel."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "91"
     },
@@ -7604,8 +7604,8 @@
         "en": "Specifies the domain or people over which a character exercised tribal leadership."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "96"
     },
@@ -7643,8 +7643,8 @@
         "en": "The event or state that results from the action."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "99"
     },
@@ -7683,9 +7683,9 @@
         "en": "Defines a state where the primary region is entirely subsumed by the secondary region while sharing at least one boundary point."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "100"
@@ -7721,8 +7721,8 @@
         "en": "The genre(s) of the story."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "irreflexive"
       ],
       "id": "102"
@@ -7791,9 +7791,9 @@
         "en": "Represents a symmetric and mutual bond of friendship between two entities."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "109"
@@ -7844,9 +7844,9 @@
         "en": "This event occurs before another event."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -7910,9 +7910,9 @@
         "en": "The goal or purpose behind the action."
       },
       "attributes": [
-        "object",
-        "external",
         "functional",
+        "external",
+        "object",
         "irreflexive"
       ],
       "id": "120"
@@ -7966,8 +7966,8 @@
         "en": "Denotes the tragic act of a character intentionally taking their own life."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "126"
     },
@@ -8011,8 +8011,8 @@
         "en": "A conflict central to the story."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "132"
     },
@@ -8095,9 +8095,9 @@
         "en": "Describes a spatial relation where two regions are strictly disjoint and share no spatial points."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "149"
@@ -8214,8 +8214,8 @@
         "en": "The narrative role a character plays."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "173"
     },
@@ -8272,9 +8272,9 @@
       },
       "attributes": [
         "reflexive",
-        "object",
         "external",
         "symmetric",
+        "object",
         "transitive"
       ],
       "id": "54"
@@ -8314,9 +8314,9 @@
         "en": "Denotes a relation where the boundaries of two regions intersect while their interiors remain disjoint."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "178"
@@ -8358,9 +8358,9 @@
       },
       "attributes": [
         "reflexive",
-        "object",
         "external",
         "symmetric",
+        "object",
         "transitive"
       ],
       "id": "180"
@@ -8417,9 +8417,9 @@
         "en": "The primary interval begins before the secondary interval and concludes strictly within its duration."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "61"
@@ -8537,8 +8537,8 @@
         "en": "A temporal relation placing the first instant chronologically subsequent to the second."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "212"
@@ -8574,9 +8574,9 @@
         "en": "Denotes a formal and symmetric matrimonial relationship between two entities."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "214"
@@ -8634,8 +8634,8 @@
         "en": "The primary interval strictly and completely encloses the chronological boundaries of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "63"
@@ -8648,15 +8648,6 @@
         "anonymous"
       ],
       "id": "219"
-    },
-    {
-      "range": "222",
-      "domain": "221",
-      "attributes": [
-        "object",
-        "anonymous"
-      ],
-      "id": "220"
     },
     {
       "iri": "https://w3id.org/narn/to/finishedBy",
@@ -8693,13 +8684,22 @@
         "en": "Both intervals share identical ending instants while the primary interval commences strictly before the secondary interval begins."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
       "id": "58"
+    },
+    {
+      "range": "224",
+      "domain": "221",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "id": "223"
     },
     {
       "iri": "https://w3id.org/narn/event/occursAt",
@@ -8736,9 +8736,9 @@
         "en": "The place where the event occurs."
       },
       "attributes": [
+        "external",
         "someValues",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "225"
@@ -8763,7 +8763,7 @@
     },
     {
       "range": "232",
-      "domain": "182",
+      "domain": "183",
       "attributes": [
         "object",
         "anonymous"
@@ -8771,44 +8771,11 @@
       "id": "234"
     },
     {
-      "iri": "https://w3id.org/narn/event/occursAt",
-      "baseIri": "https://w3id.org/narn/event",
-      "range": "88",
-      "annotations": {
-        "altLabel": [
-          {
-            "identifier": "altLabel",
-            "language": "en",
-            "value": "takes place at",
-            "type": "label"
-          }
-        ],
-        "example": [
-          {
-            "identifier": "example",
-            "language": "en",
-            "value": "The Captivity of Húrin occurs at Angband.",
-            "type": "label"
-          }
-        ]
-      },
-      "label": {
-        "IRI-based": "occursAt",
-        "en": "occurs at"
-      },
-      "domain": "182",
-      "subproperty": [
-        "226",
-        "227"
-      ],
-      "comment": {
-        "en": "The place where the event occurs."
-      },
+      "range": "221",
+      "domain": "183",
       "attributes": [
         "object",
-        "external",
-        "allValues",
-        "irreflexive"
+        "anonymous"
       ],
       "id": "235"
     },
@@ -8820,6 +8787,15 @@
         "anonymous"
       ],
       "id": "236"
+    },
+    {
+      "range": "238",
+      "domain": "183",
+      "attributes": [
+        "object",
+        "anonymous"
+      ],
+      "id": "237"
     },
     {
       "iri": "https://w3id.org/narn/event/hasSubEvent",
@@ -8852,13 +8828,13 @@
         "en": "A smaller event that occurs as part of this one."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
-      "id": "238"
+      "id": "239"
     },
     {
       "iri": "https://w3id.org/narn/to/startedBy",
@@ -8895,9 +8871,9 @@
         "en": "Both intervals share identical starting instants while the primary interval extends strictly beyond the conclusion of the secondary interval."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -8937,34 +8913,58 @@
         "en": "Indicates that two regions share a common interior subset without either fully subsuming the other."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
-        "irreflexive"
-      ],
-      "id": "239"
-    },
-    {
-      "range": "221",
-      "domain": "182",
-      "attributes": [
         "object",
-        "anonymous"
+        "irreflexive"
       ],
       "id": "240"
     },
     {
-      "range": "153",
-      "domain": "128",
+      "iri": "https://w3id.org/narn/event/occursAt",
+      "baseIri": "https://w3id.org/narn/event",
+      "range": "88",
+      "annotations": {
+        "altLabel": [
+          {
+            "identifier": "altLabel",
+            "language": "en",
+            "value": "takes place at",
+            "type": "label"
+          }
+        ],
+        "example": [
+          {
+            "identifier": "example",
+            "language": "en",
+            "value": "The Captivity of Húrin occurs at Angband.",
+            "type": "label"
+          }
+        ]
+      },
+      "label": {
+        "IRI-based": "occursAt",
+        "en": "occurs at"
+      },
+      "domain": "183",
+      "subproperty": [
+        "226",
+        "227"
+      ],
+      "comment": {
+        "en": "The place where the event occurs."
+      },
       "attributes": [
+        "allValues",
+        "external",
         "object",
-        "anonymous"
+        "irreflexive"
       ],
       "id": "241"
     },
     {
-      "range": "243",
-      "domain": "182",
+      "range": "153",
+      "domain": "128",
       "attributes": [
         "object",
         "anonymous"
@@ -9006,8 +9006,8 @@
         "en": "The place where the event occurs."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "irreflexive"
       ],
       "id": "244"
@@ -9046,9 +9046,9 @@
         "en": "The event or state that results from the action."
       },
       "attributes": [
-        "object",
+        "allValues",
         "external",
-        "allValues"
+        "object"
       ],
       "id": "245"
     },
@@ -9086,8 +9086,8 @@
         "en": "Specifies a location where a character was forcibly imprisoned or contained."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "247"
     },
@@ -9125,10 +9125,10 @@
         "en": "The entity that the action is directed towards."
       },
       "attributes": [
+        "allValues",
+        "external",
         "asymmetric",
         "object",
-        "external",
-        "allValues",
         "irreflexive"
       ],
       "id": "249"
@@ -9191,10 +9191,10 @@
         "en": "Relates a narrative unit to its contained subunits."
       },
       "attributes": [
-        "object",
+        "allValues",
         "external",
-        "transitive",
-        "allValues"
+        "object",
+        "transitive"
       ],
       "id": "259"
     },
@@ -9208,9 +9208,46 @@
       "id": "260"
     },
     {
+      "iri": "https://w3id.org/narn/plot/hasAuthor",
+      "baseIri": "https://w3id.org/narn/plot",
+      "range": "264",
+      "annotations": {
+        "altLabel": [
+          {
+            "identifier": "altLabel",
+            "language": "en",
+            "value": "written by",
+            "type": "label"
+          }
+        ],
+        "example": [
+          {
+            "identifier": "example",
+            "language": "en",
+            "value": "The Narn has author J.R.R. Tolkien.",
+            "type": "label"
+          }
+        ]
+      },
+      "label": {
+        "IRI-based": "hasAuthor",
+        "en": "has author"
+      },
+      "domain": "82",
+      "comment": {
+        "en": "The author of the story."
+      },
+      "attributes": [
+        "functional",
+        "external",
+        "object"
+      ],
+      "id": "263"
+    },
+    {
       "iri": "https://w3id.org/narn/event/hasWitness",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -9241,45 +9278,8 @@
         "en": "An entity that observes the event without acting."
       },
       "attributes": [
-        "object",
-        "external"
-      ],
-      "id": "263"
-    },
-    {
-      "iri": "https://w3id.org/narn/plot/hasAuthor",
-      "baseIri": "https://w3id.org/narn/plot",
-      "range": "266",
-      "annotations": {
-        "altLabel": [
-          {
-            "identifier": "altLabel",
-            "language": "en",
-            "value": "written by",
-            "type": "label"
-          }
-        ],
-        "example": [
-          {
-            "identifier": "example",
-            "language": "en",
-            "value": "The Narn has author J.R.R. Tolkien.",
-            "type": "label"
-          }
-        ]
-      },
-      "label": {
-        "IRI-based": "hasAuthor",
-        "en": "has author"
-      },
-      "domain": "82",
-      "comment": {
-        "en": "The author of the story."
-      },
-      "attributes": [
-        "object",
         "external",
-        "functional"
+        "object"
       ],
       "id": "265"
     },
@@ -9317,8 +9317,8 @@
         "en": "Indicates a profound sentiment of malice or hatred directed at another entity."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "267"
     },
@@ -9353,9 +9353,9 @@
         "en": "One narrative unit sequentially comes after another."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -9396,9 +9396,9 @@
         "en": "Specifies a relation where the primary region is strictly contained within the interior of the secondary region with no shared boundary points."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -9453,9 +9453,9 @@
         "en": "The event that this foreshadowing hints at."
       },
       "attributes": [
-        "object",
+        "allValues",
         "external",
-        "allValues"
+        "object"
       ],
       "id": "274"
     },
@@ -9469,7 +9469,7 @@
       "id": "275"
     },
     {
-      "range": "196",
+      "range": "194",
       "domain": "197",
       "attributes": [
         "object",
@@ -9496,7 +9496,7 @@
       "id": "278"
     },
     {
-      "range": "194",
+      "range": "196",
       "domain": "197",
       "attributes": [
         "object",
@@ -9538,8 +9538,8 @@
         "en": "Indicates a geographical location where a character resided for a significant duration."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "248"
     },
@@ -9592,9 +9592,9 @@
         "en": "Indicates that a place constitutes a subarea of another place."
       },
       "attributes": [
+        "external",
         "someValues",
         "object",
-        "external",
         "transitive"
       ],
       "id": "281"
@@ -9633,9 +9633,9 @@
         "en": "Describes a symmetric emotional state where two characters share reciprocal affection."
       },
       "attributes": [
-        "object",
         "external",
-        "symmetric"
+        "symmetric",
+        "object"
       ],
       "id": "283"
     },
@@ -9676,8 +9676,8 @@
         "en": "A general spatial relation between two places."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "282"
     },
@@ -9709,7 +9709,7 @@
       "id": "288"
     },
     {
-      "range": "10",
+      "range": "12",
       "domain": "16",
       "attributes": [
         "object",
@@ -9718,7 +9718,7 @@
       "id": "289"
     },
     {
-      "range": "12",
+      "range": "10",
       "domain": "16",
       "attributes": [
         "object",
@@ -9760,9 +9760,9 @@
         "en": "The ending place of a movement event."
       },
       "attributes": [
+        "external",
         "someValues",
-        "object",
-        "external"
+        "object"
       ],
       "id": "291"
     },
@@ -9801,9 +9801,9 @@
         "en": "The place where the event occurs."
       },
       "attributes": [
-        "object",
-        "external",
         "allValues",
+        "external",
+        "object",
         "irreflexive"
       ],
       "id": "292"
@@ -9820,7 +9820,7 @@
     {
       "iri": "https://w3id.org/narn/plot/hasTheme",
       "baseIri": "https://w3id.org/narn/plot",
-      "range": "266",
+      "range": "264",
       "annotations": {
         "altLabel": [
           {
@@ -9848,8 +9848,8 @@
         "en": "A thematic element or motif in the story."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "295"
     },
@@ -9887,9 +9887,9 @@
         "en": "The starting place of a movement event."
       },
       "attributes": [
+        "external",
         "someValues",
-        "object",
-        "external"
+        "object"
       ],
       "id": "296"
     },
@@ -9930,9 +9930,9 @@
         "en": "This event causally leads to another event."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -9969,8 +9969,8 @@
         "en": "Links a story to the plot devices it employs."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "301"
     },
@@ -10005,8 +10005,8 @@
         "en": "Links a story to its plot stages."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "302"
     },
@@ -10046,9 +10046,9 @@
         "en": "The inverse relation where the primary region completely subsumes the secondary region while sharing boundary points."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "303"
@@ -10087,8 +10087,8 @@
         "en": "The starting place of a movement event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "226"
     },
@@ -10126,11 +10126,11 @@
         "en": "The absolute starting instant bounding the beginning of a temporal interval."
       },
       "attributes": [
-        "asymmetric",
-        "someValues",
-        "object",
-        "external",
         "functional",
+        "external",
+        "someValues",
+        "asymmetric",
+        "object",
         "irreflexive"
       ],
       "id": "304"
@@ -10170,10 +10170,10 @@
         "en": "The association between a temporal interval and a specific instant contained within or bounding it."
       },
       "attributes": [
+        "allValues",
+        "external",
         "asymmetric",
         "object",
-        "external",
-        "allValues",
         "irreflexive"
       ],
       "id": "306"
@@ -10212,11 +10212,11 @@
         "en": "The absolute starting instant bounding the beginning of a temporal interval."
       },
       "attributes": [
-        "asymmetric",
-        "object",
-        "external",
         "allValues",
         "functional",
+        "external",
+        "asymmetric",
+        "object",
         "irreflexive"
       ],
       "id": "309"
@@ -10258,18 +10258,16 @@
       "id": "313"
     },
     {
-      "iri": "https://w3id.org/narn/social/wasTheKingOf",
-      "equivalent": [
-        "315"
-      ],
+      "iri": "https://w3id.org/narn/social/wasServedBy",
+      "inverse": "315",
       "baseIri": "https://w3id.org/narn/social",
-      "range": "88",
+      "range": "52",
       "annotations": {
         "altLabel": [
           {
             "identifier": "altLabel",
             "language": "en",
-            "value": "reigned over",
+            "value": "had as servant",
             "type": "label"
           }
         ],
@@ -10277,25 +10275,23 @@
           {
             "identifier": "example",
             "language": "en",
-            "value": "Thingol held supreme authority and was the king of Doriath.",
+            "value": "Húrin held authority and was served by Sador.",
             "type": "label"
           }
         ]
       },
       "label": {
-        "IRI-based": "wasTheKingOf",
-        "en": "was the king of"
+        "IRI-based": "wasServedBy",
+        "en": "was served by"
       },
       "domain": "113",
       "comment": {
-        "en": "Specifies the geographical or political domain over which a character held absolute royal authority."
+        "en": "The inverse relation designating the superior who receives service."
       },
       "attributes": [
-        "asymmetric",
-        "someValues",
-        "object",
+        "allValues",
         "external",
-        "irreflexive"
+        "object"
       ],
       "id": "314"
     },
@@ -10333,26 +10329,28 @@
         "en": "The absolute ending instant bounding the conclusion of a temporal interval."
       },
       "attributes": [
-        "asymmetric",
-        "someValues",
-        "object",
-        "external",
         "functional",
+        "external",
+        "someValues",
+        "asymmetric",
+        "object",
         "irreflexive"
       ],
       "id": "316"
     },
     {
-      "iri": "https://w3id.org/narn/social/wasServedBy",
-      "inverse": "318",
+      "iri": "https://w3id.org/narn/social/wasTheKingOf",
+      "equivalent": [
+        "318"
+      ],
       "baseIri": "https://w3id.org/narn/social",
-      "range": "52",
+      "range": "88",
       "annotations": {
         "altLabel": [
           {
             "identifier": "altLabel",
             "language": "en",
-            "value": "had as servant",
+            "value": "reigned over",
             "type": "label"
           }
         ],
@@ -10360,23 +10358,25 @@
           {
             "identifier": "example",
             "language": "en",
-            "value": "Húrin held authority and was served by Sador.",
+            "value": "Thingol held supreme authority and was the king of Doriath.",
             "type": "label"
           }
         ]
       },
       "label": {
-        "IRI-based": "wasServedBy",
-        "en": "was served by"
+        "IRI-based": "wasTheKingOf",
+        "en": "was the king of"
       },
       "domain": "113",
       "comment": {
-        "en": "The inverse relation designating the superior who receives service."
+        "en": "Specifies the geographical or political domain over which a character held absolute royal authority."
       },
       "attributes": [
-        "object",
         "external",
-        "allValues"
+        "someValues",
+        "asymmetric",
+        "object",
+        "irreflexive"
       ],
       "id": "317"
     },
@@ -10417,9 +10417,9 @@
         "en": "Two places share a boundary but neither contains the other."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "179"
@@ -10427,7 +10427,7 @@
     {
       "iri": "https://w3id.org/narn/event/hasParticipant",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -10458,14 +10458,14 @@
         "320",
         "321",
         "91",
-        "263"
+        "265"
       ],
       "comment": {
         "en": "An entity that takes part in the event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "94"
     },
@@ -10479,15 +10479,15 @@
       "id": "322"
     },
     {
-      "iri": "https://w3id.org/narn/plot/hasNarrativeElement",
+      "iri": "https://w3id.org/narn/plot/hasNarrativeUnit",
       "baseIri": "https://w3id.org/narn/plot",
-      "range": "197",
+      "range": "41",
       "annotations": {
         "altLabel": [
           {
             "identifier": "altLabel",
             "language": "en",
-            "value": "has element",
+            "value": "divided into",
             "type": "label"
           }
         ],
@@ -10495,23 +10495,25 @@
           {
             "identifier": "example",
             "language": "en",
-            "value": "The Narn includes narrative elements like Exposition and Climax.",
+            "value": "The Narn has narrative units Part I, Part II, Part III.",
             "type": "label"
           }
         ]
       },
       "label": {
-        "IRI-based": "hasNarrativeElement",
-        "en": "has narrative element"
+        "IRI-based": "hasNarrativeUnit",
+        "en": "has narrative unit"
       },
       "domain": "82",
       "comment": {
-        "en": "Links a story to its plot stages."
+        "en": "Links a story to its structural units."
       },
       "attributes": [
+        "external",
         "someValues",
+        "asymmetric",
         "object",
-        "external"
+        "irreflexive"
       ],
       "id": "323"
     },
@@ -10546,9 +10548,9 @@
         "en": "Represents a symmetric bond based on shared familial lineage or blood relation."
       },
       "attributes": [
-        "object",
         "external",
-        "symmetric"
+        "symmetric",
+        "object"
       ],
       "id": "324"
     },
@@ -10583,9 +10585,9 @@
         "en": "Specifies the domain or people over which a character exercised tribal leadership."
       },
       "attributes": [
+        "external",
         "someValues",
-        "object",
-        "external"
+        "object"
       ],
       "id": "325"
     },
@@ -10620,23 +10622,23 @@
         "en": "Relates a narrative unit to its contained subunits."
       },
       "attributes": [
+        "external",
         "someValues",
         "object",
-        "external",
         "transitive"
       ],
       "id": "328"
     },
     {
-      "iri": "https://w3id.org/narn/plot/hasNarrativeUnit",
+      "iri": "https://w3id.org/narn/plot/hasNarrativeElement",
       "baseIri": "https://w3id.org/narn/plot",
-      "range": "41",
+      "range": "197",
       "annotations": {
         "altLabel": [
           {
             "identifier": "altLabel",
             "language": "en",
-            "value": "divided into",
+            "value": "has element",
             "type": "label"
           }
         ],
@@ -10644,25 +10646,23 @@
           {
             "identifier": "example",
             "language": "en",
-            "value": "The Narn has narrative units Part I, Part II, Part III.",
+            "value": "The Narn includes narrative elements like Exposition and Climax.",
             "type": "label"
           }
         ]
       },
       "label": {
-        "IRI-based": "hasNarrativeUnit",
-        "en": "has narrative unit"
+        "IRI-based": "hasNarrativeElement",
+        "en": "has narrative element"
       },
       "domain": "82",
       "comment": {
-        "en": "Links a story to its structural units."
+        "en": "Links a story to its plot stages."
       },
       "attributes": [
-        "asymmetric",
-        "someValues",
-        "object",
         "external",
-        "irreflexive"
+        "someValues",
+        "object"
       ],
       "id": "330"
     },
@@ -10697,9 +10697,9 @@
         "en": "Links a story to its plot stages."
       },
       "attributes": [
+        "external",
         "someValues",
-        "object",
-        "external"
+        "object"
       ],
       "id": "331"
     },
@@ -10723,7 +10723,7 @@
     },
     {
       "range": "232",
-      "domain": "222",
+      "domain": "224",
       "attributes": [
         "object",
         "anonymous"
@@ -10768,7 +10768,7 @@
     },
     {
       "iri": "https://w3id.org/narn/event/isSubEventOf",
-      "inverse": "238",
+      "inverse": "239",
       "baseIri": "https://w3id.org/narn/event",
       "range": "27",
       "annotations": {
@@ -10801,8 +10801,8 @@
         "en": "This event is part of a larger event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "340"
     },
@@ -10841,15 +10841,15 @@
         "100",
         "178",
         "149",
-        "239"
+        "240"
       ],
       "comment": {
         "en": "The most general spatial relation between two regions."
       },
       "attributes": [
-        "object",
         "external",
-        "symmetric"
+        "symmetric",
+        "object"
       ],
       "id": "101"
     },
@@ -10923,8 +10923,8 @@
         "en": "The agent who intentionally performs the action."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "347"
     },
@@ -10963,9 +10963,9 @@
         "en": "The starting instant of the primary interval is chronologically identical to the ending instant of the secondary interval."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "57"
@@ -11001,8 +11001,8 @@
         "en": "Maps a narrative element to the event it represents."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "352"
     },
@@ -11010,7 +11010,7 @@
       "iri": "https://w3id.org/narn/event/isBegottenIn",
       "inverse": "321",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "182",
+      "range": "183",
       "annotations": {
         "example": [
           {
@@ -11030,8 +11030,8 @@
         "en": "Inverse of begets. Links a character to the birth event that brings them into existence."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "353"
     },
@@ -11064,13 +11064,13 @@
       "superproperty": [
         "94"
       ],
-      "domain": "182",
+      "domain": "183",
       "comment": {
         "en": "The character brought into existence by a birth event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "321"
     },
@@ -11108,10 +11108,10 @@
         "en": "The absolute ending instant bounding the conclusion of a temporal interval."
       },
       "attributes": [
+        "functional",
+        "external",
         "asymmetric",
         "object",
-        "external",
-        "functional",
         "irreflexive"
       ],
       "id": "307"
@@ -11148,9 +11148,9 @@
         "en": "Defines a fundamentally antagonistic and hostile relationship."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "355"
@@ -11187,8 +11187,8 @@
         "en": "Inverse of containsUnit, relates a unit to its parent."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "356"
     },
@@ -11223,8 +11223,8 @@
         "en": "The narrative unit in which this element appears."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "358"
     },
@@ -11263,9 +11263,9 @@
         "en": "The ending instant of the primary interval is chronologically identical to the starting instant of the secondary interval."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "22"
@@ -11329,9 +11329,9 @@
       },
       "attributes": [
         "reflexive",
-        "object",
         "external",
         "symmetric",
+        "object",
         "transitive"
       ],
       "id": "362"
@@ -11339,7 +11339,7 @@
     {
       "iri": "https://w3id.org/narn/event/hasAgent",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -11375,8 +11375,8 @@
         "en": "The entity that intentionally causes or performs the event."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "irreflexive"
       ],
       "id": "319"
@@ -11413,8 +11413,8 @@
         "en": "The primary interval commences either strictly subsequent to or exactly at the conclusion of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "363"
@@ -11455,9 +11455,9 @@
         "en": "The inverse relation where the primary region completely and strictly contains the secondary region within its interior."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -11466,7 +11466,7 @@
     {
       "iri": "https://w3id.org/narn/event/creates",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -11494,8 +11494,8 @@
         "en": "An entity produced or created by the event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "365"
     },
@@ -11533,10 +11533,10 @@
         "en": "Functions as an equivalent property signifying sovereign rule over a domain."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
-      "id": "315"
+      "id": "318"
     },
     {
       "iri": "https://w3id.org/narn/social/wasTheBestFriendOf",
@@ -11572,11 +11572,47 @@
         "en": "Specifies an exceptionally close and prioritized bond of mutual friendship."
       },
       "attributes": [
-        "object",
         "external",
-        "symmetric"
+        "symmetric",
+        "object"
       ],
       "id": "111"
+    },
+    {
+      "iri": "https://w3id.org/narn/action/causesByAction",
+      "baseIri": "https://w3id.org/narn/action",
+      "range": "18",
+      "annotations": {
+        "altLabel": [
+          {
+            "identifier": "altLabel",
+            "language": "en",
+            "value": "brings about",
+            "type": "label"
+          }
+        ],
+        "example": [
+          {
+            "identifier": "example",
+            "language": "en",
+            "value": "Turambar causes the death of Glaurung by performing the slaying.",
+            "type": "label"
+          }
+        ]
+      },
+      "label": {
+        "IRI-based": "causesByAction",
+        "en": "causes by action"
+      },
+      "domain": "18",
+      "comment": {
+        "en": "If an agent performs an action with a result, the agent indirectly causes that result."
+      },
+      "attributes": [
+        "external",
+        "object"
+      ],
+      "id": "368"
     },
     {
       "iri": "https://w3id.org/narn/action/hasTarget",
@@ -11613,46 +11649,10 @@
         "en": "The entity that the action is directed towards."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
-      ],
-      "id": "368"
-    },
-    {
-      "iri": "https://w3id.org/narn/action/causesByAction",
-      "baseIri": "https://w3id.org/narn/action",
-      "range": "18",
-      "annotations": {
-        "altLabel": [
-          {
-            "identifier": "altLabel",
-            "language": "en",
-            "value": "brings about",
-            "type": "label"
-          }
-        ],
-        "example": [
-          {
-            "identifier": "example",
-            "language": "en",
-            "value": "Turambar causes the death of Glaurung by performing the slaying.",
-            "type": "label"
-          }
-        ]
-      },
-      "label": {
-        "IRI-based": "causesByAction",
-        "en": "causes by action"
-      },
-      "domain": "18",
-      "comment": {
-        "en": "If an agent performs an action with a result, the agent indirectly causes that result."
-      },
-      "attributes": [
-        "object",
-        "external"
       ],
       "id": "369"
     },
@@ -11687,8 +11687,8 @@
         "en": "A temporal relation placing the first instant chronologically prior to the second."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "213"
@@ -11727,9 +11727,9 @@
         "en": "Two places are in proximity."
       },
       "attributes": [
-        "object",
         "external",
         "symmetric",
+        "object",
         "irreflexive"
       ],
       "id": "285"
@@ -11768,15 +11768,15 @@
         "en": "The character who receives something in a transfer action."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "irreflexive"
       ],
       "id": "320"
     },
     {
       "iri": "https://w3id.org/narn/social/wasServedBy",
-      "inverse": "318",
+      "inverse": "315",
       "baseIri": "https://w3id.org/narn/social",
       "range": "18",
       "annotations": {
@@ -11806,8 +11806,8 @@
         "en": "The inverse relation designating the superior who receives service."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "370"
     },
@@ -11842,8 +11842,8 @@
         "en": "Indicates the act of subjecting another character to a mental spell or hypnotic enchantment."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "372"
     },
@@ -11887,8 +11887,8 @@
         "en": "Inverse of isAPartOf."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "181"
@@ -11930,8 +11930,8 @@
         "en": "Defines a broad emotional directedness or sentiment from one character toward another."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "110"
     },
@@ -11966,8 +11966,8 @@
         "en": "A character involved in or affected by this plot device."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "374"
     },
@@ -12005,8 +12005,8 @@
         "en": "Denotes a state of dread or apprehension regarding another character."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "373"
     },
@@ -12041,8 +12041,8 @@
         "en": "Describes an act where a character invokes supernatural malevolence or a curse upon another."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "375"
     },
@@ -12077,9 +12077,9 @@
         "en": "The standardized chronological date and time value of a specific temporal instant."
       },
       "attributes": [
-        "datatype",
+        "functional",
         "external",
-        "functional"
+        "datatype"
       ],
       "id": "376"
     },
@@ -12118,8 +12118,8 @@
         "en": "The primary interval concludes strictly prior to the commencement of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "20"
@@ -12159,9 +12159,9 @@
         "en": "The primary interval begins strictly within the duration of the secondary interval and concludes after it."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "59"
@@ -12197,16 +12197,16 @@
         "en": "The absolute temporal length spanned by a defined interval."
       },
       "attributes": [
-        "datatype",
+        "functional",
         "external",
-        "functional"
+        "datatype"
       ],
       "id": "377"
     },
     {
       "iri": "https://w3id.org/narn/event/hasCause",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -12237,8 +12237,8 @@
         "en": "An entity involved as a contributing cause in the event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "26"
     },
@@ -12254,7 +12254,7 @@
     {
       "iri": "https://w3id.org/narn/event/hasPatient",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -12283,14 +12283,14 @@
       "domain": "27",
       "subproperty": [
         "379",
-        "368"
+        "369"
       ],
       "comment": {
         "en": "The entity affected by the event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "250"
     },
@@ -12368,7 +12368,7 @@
     },
     {
       "range": "119",
-      "domain": "182",
+      "domain": "183",
       "attributes": [
         "object",
         "anonymous"
@@ -12416,8 +12416,8 @@
         "en": "The inverse relation specifying the perpetrator of a fatal action against the subject."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "390"
     },
@@ -12450,7 +12450,7 @@
     },
     {
       "range": "29",
-      "domain": "223",
+      "domain": "222",
       "attributes": [
         "object",
         "anonymous"
@@ -12486,7 +12486,7 @@
     },
     {
       "range": "119",
-      "domain": "243",
+      "domain": "238",
       "attributes": [
         "object",
         "anonymous"
@@ -12557,8 +12557,8 @@
         "en": "Indicates a profound sentiment of affection or love directed at another entity."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "284"
     },
@@ -12632,10 +12632,10 @@
         "en": "The absolute starting instant bounding the beginning of a temporal interval."
       },
       "attributes": [
+        "functional",
+        "external",
         "asymmetric",
         "object",
-        "external",
-        "functional",
         "irreflexive"
       ],
       "id": "308"
@@ -12674,9 +12674,9 @@
         "en": "Both intervals share identical starting instants while the primary interval concludes strictly before the secondary interval."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "transitive",
         "irreflexive"
       ],
@@ -12712,7 +12712,7 @@
     {
       "iri": "https://w3id.org/narn/event/hasVictim",
       "baseIri": "https://w3id.org/narn/event",
-      "range": "264",
+      "range": "266",
       "annotations": {
         "altLabel": [
           {
@@ -12744,8 +12744,8 @@
         "en": "The entity that suffers harm in the event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "379"
     },
@@ -12798,9 +12798,9 @@
         "en": "A settlement is the capital of a realm."
       },
       "attributes": [
-        "object",
+        "functional",
         "external",
-        "functional"
+        "object"
       ],
       "id": "411"
     },
@@ -12835,12 +12835,12 @@
         "en": "Indicates a hierarchical relationship where one character acts as a subordinate to another."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
-      "id": "318"
+      "id": "315"
     },
     {
       "range": "108",
@@ -12936,8 +12936,8 @@
         "en": "Relates a narrative unit to its contained subunits."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "357"
@@ -12973,9 +12973,9 @@
         "en": "The date the story was published."
       },
       "attributes": [
-        "datatype",
+        "functional",
         "external",
-        "functional"
+        "datatype"
       ],
       "id": "419"
     },
@@ -13010,8 +13010,8 @@
         "en": "The event that this foreshadowing hints at."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "420"
     },
@@ -13055,8 +13055,8 @@
         "en": "Indicates that a place constitutes a subarea of another place."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "34"
@@ -13092,8 +13092,8 @@
         "en": "The ordering position of a unit within its parent."
       },
       "attributes": [
-        "datatype",
-        "external"
+        "external",
+        "datatype"
       ],
       "id": "421"
     },
@@ -13132,9 +13132,9 @@
         "en": "The association between a temporal interval and a specific instant contained within or bounding it."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "305"
@@ -13170,15 +13170,15 @@
         "en": "Functionally assigns a specific emotional state or valence to a relational entity."
       },
       "attributes": [
-        "object",
+        "functional",
         "external",
-        "functional"
+        "object"
       ],
       "id": "422"
     },
     {
       "range": "261",
-      "domain": "223",
+      "domain": "222",
       "attributes": [
         "object",
         "anonymous"
@@ -13219,8 +13219,8 @@
         "en": "The ending place of a movement event."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "227"
     },
@@ -13234,7 +13234,7 @@
       "id": "425"
     },
     {
-      "range": "29",
+      "range": "31",
       "domain": "28",
       "attributes": [
         "object",
@@ -13279,14 +13279,14 @@
         "en": "The primary interval is strictly and completely enclosed within the chronological boundaries of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "56"
     },
     {
-      "range": "31",
+      "range": "32",
       "domain": "28",
       "attributes": [
         "object",
@@ -13295,7 +13295,7 @@
       "id": "427"
     },
     {
-      "range": "32",
+      "range": "29",
       "domain": "28",
       "attributes": [
         "object",
@@ -13343,8 +13343,8 @@
         "en": "Links a character role to a narrative device that affects them."
       },
       "attributes": [
-        "object",
-        "external"
+        "external",
+        "object"
       ],
       "id": "432"
     },
@@ -13383,8 +13383,8 @@
         "en": "The primary interval commences strictly subsequent to the conclusion of the secondary interval."
       },
       "attributes": [
-        "object",
         "external",
+        "object",
         "transitive"
       ],
       "id": "60"
@@ -13392,7 +13392,7 @@
     {
       "iri": "https://w3id.org/narn/social/wasTheKingOf",
       "equivalent": [
-        "315"
+        "318"
       ],
       "baseIri": "https://w3id.org/narn/social",
       "range": "88",
@@ -13423,9 +13423,9 @@
         "en": "Specifies the geographical or political domain over which a character held absolute royal authority."
       },
       "attributes": [
+        "external",
         "asymmetric",
         "object",
-        "external",
         "irreflexive"
       ],
       "id": "366"

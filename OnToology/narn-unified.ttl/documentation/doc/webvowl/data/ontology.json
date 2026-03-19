@@ -21,7 +21,7 @@
       "Erdem Önal"
     ],
     "labels": {
-      "en": "Narn Unified Ontology Specification"
+      "en": "The Narn Ontology"
     },
     "comments": {
       "en": "An OWL ontology for modeling story plots and narrative structures. It provides a formal vocabulary to represent characters, locations, events, actions, and temporal relations within a narrative."
@@ -68,9 +68,9 @@
         }
       ]
     },
-    "version": "init version",
+    "version": "1.0.0",
     "title": {
-      "en": "Narn Unified Ontology Specification"
+      "en": "The Narn Ontology"
     },
     "description": {
       "en": "An OWL ontology for modeling story plots and narrative structures. It provides a formal vocabulary to represent characters, locations, events, actions, and temporal relations within a narrative."
