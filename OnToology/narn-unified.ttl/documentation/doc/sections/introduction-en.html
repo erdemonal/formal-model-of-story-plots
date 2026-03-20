@@ -1,16 +1,10 @@
 <h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-<span class="markdown">
-    
-The Narn Ontology provides a formal vocabulary for describing story plots. The ontology is structured into seven modules. Each module addresses different aspects of the story, such as places and spatial hierarchy https://w3id.org/narn/location/, spatial topology using the Region Connection Calculus https://w3id.org/narn/rcc/, temporal entities and Allen's temporal algebra https://w3id.org/narn/to/, social relations https://w3id.org/narn/social/, event types and participant roles https://w3id.org/narn/event/, narrative structure https://w3id.org/narn/plot/, and actions https://w3id.org/narn/action/. The ontology is instantiated from *Narn i Chîn Húrin* ([narn-instances.ttl](https://raw.githubusercontent.com/erdemonal/formal-model-of-story-plots/main/narn-instances.ttl)).
-
-## Competency questions 
-
-The following competency questions were tested using SPARQL. Each competency question is presented with its SPARQL query, followed by the corresponding result set produced by the reasoner.
-
-### 1) Who is the parent of X? married to X? relative to X?
-
-```sparql
-PREFIX fo: &lt;https://purl.org/family/&gt;
+<div class="markdown-body">
+<p>The Narn Ontology provides a formal vocabulary for describing story plots. The ontology is structured into seven modules. Each module addresses different aspects of the story, such as places and spatial hierarchy <a href="https://w3id.org/narn/location/">https://w3id.org/narn/location/</a>, spatial topology using the Region Connection Calculus <a href="https://w3id.org/narn/rcc/">https://w3id.org/narn/rcc/</a>, temporal entities and Allen's temporal algebra <a href="https://w3id.org/narn/to/">https://w3id.org/narn/to/</a>, social relations <a href="https://w3id.org/narn/social/">https://w3id.org/narn/social/</a>, event types and participant roles <a href="https://w3id.org/narn/event/">https://w3id.org/narn/event/</a>, narrative structure <a href="https://w3id.org/narn/plot/">https://w3id.org/narn/plot/</a>, and actions <a href="https://w3id.org/narn/action/">https://w3id.org/narn/action/</a>. The ontology is instantiated from <em>Narn i Chîn Húrin</em> (<a href="https://raw.githubusercontent.com/erdemonal/formal-model-of-story-plots/main/narn-instances.ttl">narn-instances.ttl</a>).</p>
+<h3>Competency questions</h3>
+<p>The following competency questions were tested using SPARQL. Each competency question is presented with its SPARQL query, followed by the corresponding result set produced by the reasoner.</p>
+<h4>1) Who is the parent of X? married to X? relative to X?</h4>
+<pre><code class="language-sparql">PREFIX fo: &lt;https://purl.org/family/&gt;
 PREFIX soc: &lt;https://w3id.org/narn/social/&gt;
 SELECT ?parent ?relation ?other WHERE {
   { ?parent fo:isTheFatherOf|fo:isTheMotherOf ?other . BIND("parent of" AS ?relation) }
@@ -20,11 +14,8 @@ SELECT ?parent ?relation ?other WHERE {
   { ?parent soc:isMarriedTo ?other . BIND("married to" AS ?relation) }
   UNION
   { ?parent soc:isAKinsmanOf ?other . BIND("kinsman of" AS ?relation) }
-}
-```
-
-```text
-&lt;https://w3id.org/narn/Húrin&gt; "parent of" &lt;https://w3id.org/narn/Túrin&gt; .
+}</code></pre>
+<pre><code class="language-text">&lt;https://w3id.org/narn/Húrin&gt; "parent of" &lt;https://w3id.org/narn/Túrin&gt; .
 &lt;https://w3id.org/narn/Mîm&gt; "parent of" &lt;https://w3id.org/narn/Khîm&gt; .
 &lt;https://w3id.org/narn/Mîm&gt; "parent of" &lt;https://w3id.org/narn/Ibun&gt; .
 &lt;https://w3id.org/narn/Huor&gt; "parent of" &lt;https://w3id.org/narn/Tuor&gt; .
@@ -40,37 +31,23 @@ SELECT ?parent ?relation ?other WHERE {
 &lt;https://w3id.org/narn/Huor&gt; "married to" &lt;https://w3id.org/narn/Rían&gt; .
 &lt;https://w3id.org/narn/Morwen&gt; "married to" &lt;https://w3id.org/narn/Húrin&gt; .
 &lt;https://w3id.org/narn/Turambar&gt; "married to" &lt;https://w3id.org/narn/Níniel&gt; .
-&lt;https://w3id.org/narn/Túrin&gt; "kinsman of" &lt;https://w3id.org/narn/Nienor&gt; .
-```
-
-### 2) Where did character X go during the story?
-
-```sparql
-PREFIX soc: &lt;https://w3id.org/narn/social/&gt;
+&lt;https://w3id.org/narn/Túrin&gt; "kinsman of" &lt;https://w3id.org/narn/Nienor&gt; .</code></pre>
+<h4>2) Where did character X go during the story?</h4>
+<pre><code class="language-sparql">PREFIX soc: &lt;https://w3id.org/narn/social/&gt;
 PREFIX narn: &lt;https://w3id.org/narn/&gt;
 SELECT ?place WHERE {
   narn:Túrin soc:livedIn ?place .
-}
-```
-
-```text
-&lt;https://w3id.org/narn/Dor-lómin&gt; .
-&lt;https://w3id.org/narn/Doriath&gt; .
-```
-
-### 3) Who was involved in event E?
-
-```sparql
-PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
+}</code></pre>
+<pre><code class="language-text">&lt;https://w3id.org/narn/Dor-lómin&gt; .
+&lt;https://w3id.org/narn/Doriath&gt; .</code></pre>
+<h4>3) Who was involved in event E?</h4>
+<pre><code class="language-sparql">PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?eventLabel ?participant WHERE {
   ?event evnt:hasParticipant|evnt:hasAgent|evnt:hasVictim|evnt:hasWitness ?participant .
   ?event rdfs:label ?eventLabel .
-}
-```
-
-```text
-"Birth of Túrin"@en &lt;https://w3id.org/narn/Morwen&gt; .
+}</code></pre>
+<pre><code class="language-text">"Birth of Túrin"@en &lt;https://w3id.org/narn/Morwen&gt; .
 "Marriage of Turambar and Níniel"@en &lt;https://w3id.org/narn/Níniel&gt; .
 "Marriage of Turambar and Níniel"@en &lt;https://w3id.org/narn/Turambar&gt; .
 "Túrin's time in Brethil"@en &lt;https://w3id.org/narn/Túrin&gt; .
@@ -117,23 +94,16 @@ SELECT ?eventLabel ?participant WHERE {
 "Death of Turambar"@en &lt;https://w3id.org/narn/Turambar&gt; .
 "Death of Brandir"@en &lt;https://w3id.org/narn/Brandir&gt; .
 "Mîm betrays Túrin to the Orcs"@en &lt;https://w3id.org/narn/Andróg&gt; .
-"Siege and sack of Nargothrond"@en &lt;https://w3id.org/narn/Túrin&gt; .
-```
-
-### 4) Did event E1 happen before event E2?
-
-```sparql
-PREFIX to: &lt;https://w3id.org/narn/to/&gt;
+"Siege and sack of Nargothrond"@en &lt;https://w3id.org/narn/Túrin&gt; .</code></pre>
+<h4>4) Did event E1 happen before event E2?</h4>
+<pre><code class="language-sparql">PREFIX to: &lt;https://w3id.org/narn/to/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?e1Label ?e2Label WHERE {
   ?e1 to:before ?e2 .
   ?e1 rdfs:label ?e1Label .
   ?e2 rdfs:label ?e2Label .
-}
-```
-
-```text
-"Birth of Túrin"@en "Birth of Lalaith"@en .
+}</code></pre>
+<pre><code class="language-text">"Birth of Túrin"@en "Birth of Lalaith"@en .
 "Slaying of Glaurung"@en "Death of Níniel"@en .
 "Glaurung hypnotises Níniel"@en "Marriage of Turambar and Níniel"@en .
 "Fall of Nargothrond"@en "Túrin's time in Brethil"@en .
@@ -157,23 +127,16 @@ SELECT ?e1Label ?e2Label WHERE {
 "Morgoth pronounces his curse on the children of Húrin"@en "Túrin travels to Doriath"@en .
 "Túrin flees Doriath after killing Saeros"@en "Túrin among the outlaws"@en .
 "Death of Brandir"@en "Death of Turambar"@en .
-"Death of Níniel"@en "Death of Brandir"@en .
-```
-
-### 5) Where did event E occur?
-
-```sparql
-PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
+"Death of Níniel"@en "Death of Brandir"@en .</code></pre>
+<h4>5) Where did event E occur?</h4>
+<pre><code class="language-sparql">PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?eventLabel ?placeLabel WHERE {
   ?event evnt:occursAt ?place .
   ?event rdfs:label ?eventLabel .
   ?place rdfs:label ?placeLabel .
-}
-```
-
-```text
-"Birth of Túrin"@en "Dor-lómin"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Birth of Túrin"@en "Dor-lómin"@sjn .
 "Birth of Túrin"@en "Land of Echoes"@en .
 "Slaying of Glaurung"@en "Brethil"@sjn .
 "Marriage of Turambar and Níniel"@en "Brethil"@sjn .
@@ -234,23 +197,16 @@ SELECT ?eventLabel ?placeLabel WHERE {
 "Death of Turambar"@en "Brethil"@sjn .
 "Death of Brandir"@en "Brethil"@sjn .
 "Death of Níniel"@en "Cabed-en-Aras"@sjn .
-"Death of Níniel"@en "Deer's Leap"@en .
-```
-
-### 6) Is it possible to be in locations L1 and L2 at the same time?
-
-```sparql
-PREFIX rcc: &lt;https://w3id.org/narn/rcc/&gt;
+"Death of Níniel"@en "Deer's Leap"@en .</code></pre>
+<h4>6) Is it possible to be in locations L1 and L2 at the same time?</h4>
+<pre><code class="language-sparql">PREFIX rcc: &lt;https://w3id.org/narn/rcc/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?p1Label ?p2Label WHERE {
   ?p1 rcc:DC ?p2 .
   ?p1 rdfs:label ?p1Label .
   ?p2 rdfs:label ?p2Label .
-}
-```
-
-```text
-"Nargothrond"@sjn "Doriath"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Nargothrond"@sjn "Doriath"@sjn .
 "Nargothrond"@sjn "Land of the Fence"@en .
 "Angband"@sjn "Doriath"@sjn .
 "Angband"@sjn "Land of the Fence"@en .
@@ -261,13 +217,9 @@ SELECT ?p1Label ?p2Label WHERE {
 "Amon Rûdh"@sjn "Doriath"@sjn .
 "Amon Rûdh"@sjn "Land of the Fence"@en .
 "Bald Hill"@en "Doriath"@sjn .
-"Bald Hill"@en "Land of the Fence"@en .
-```
-
-### 7) What event ends story S?
-
-```sparql
-PREFIX plot: &lt;https://w3id.org/narn/plot/&gt;
+"Bald Hill"@en "Land of the Fence"@en .</code></pre>
+<h4>7) What event ends story S?</h4>
+<pre><code class="language-sparql">PREFIX plot: &lt;https://w3id.org/narn/plot/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?resolutionLabel ?eventLabel WHERE {
   ?story plot:hasNarrativeElement ?resolution .
@@ -275,18 +227,11 @@ SELECT ?resolutionLabel ?eventLabel WHERE {
   ?resolution rdfs:label ?resolutionLabel .
   ?resolution plot:correspondsToEvent ?event .
   ?event rdfs:label ?eventLabel .
-}
-```
-
-```text
-"Resolution: Deaths of Níniel and Turambar"@en "Death of Níniel"@en .
-"Resolution: Deaths of Níniel and Turambar"@en "Death of Turambar"@en .
-```
-
-### 8) What item was used as part of event E (or action A)?
-
-```sparql
-PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
+}</code></pre>
+<pre><code class="language-text">"Resolution: Deaths of Níniel and Turambar"@en "Death of Níniel"@en .
+"Resolution: Deaths of Níniel and Turambar"@en "Death of Turambar"@en .</code></pre>
+<h4>8) What item was used as part of event E (or action A)?</h4>
+<pre><code class="language-sparql">PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
 PREFIX act: &lt;https://w3id.org/narn/action/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?eventLabel ?itemLabel WHERE {
@@ -295,11 +240,8 @@ SELECT ?eventLabel ?itemLabel WHERE {
   { ?event act:hasInstrument ?item }
   ?event rdfs:label ?eventLabel .
   ?item rdfs:label ?itemLabel .
-}
-```
-
-```text
-"Death of Beleg"@en "Anglachel"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Death of Beleg"@en "Anglachel"@sjn .
 "Death of Turambar"@en "Gurthang"@sjn .
 "Death of Turambar"@en "Iron of Death"@en .
 "Beleg brings Anglachel to rescue Túrin"@en "Anglachel"@sjn .
@@ -308,23 +250,16 @@ SELECT ?eventLabel ?itemLabel WHERE {
 "Slaying of Glaurung"@en "Iron of Death"@en .
 "Túrin accidentally kills Beleg"@en "Anglachel"@sjn .
 "Túrin attacks Orcs as an outlaw leader"@en "Anglachel"@sjn .
-"Beleg brings Anglachel to rescue Túrin"@en "Anglachel"@sjn .
-```
-
-### 9) Who killed whom?
-
-```sparql
-PREFIX soc: &lt;https://w3id.org/narn/social/&gt;
+"Beleg brings Anglachel to rescue Túrin"@en "Anglachel"@sjn .</code></pre>
+<h4>9) Who killed whom?</h4>
+<pre><code class="language-sparql">PREFIX soc: &lt;https://w3id.org/narn/social/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?killerLabel ?victimLabel WHERE {
   ?killer soc:killed ?victim .
   ?killer rdfs:label ?killerLabel .
   ?victim rdfs:label ?victimLabel .
-}
-```
-
-```text
-"Túrin"@en "Saeros"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Túrin"@en "Saeros"@sjn .
 "Andróg"@sjn "Khîm"@sjn .
 "Níniel"@sjn "Nienor"@sjn .
 "Níniel"@sjn "Mourning"@en .
@@ -343,24 +278,17 @@ SELECT ?killerLabel ?victimLabel WHERE {
 "Gorthol"@sjn "Beleg"@sjn .
 "The Dread Helm"@en "Beleg"@sjn .
 "Neithan"@sjn "Forweg"@sjn .
-"The Wronged"@en "Forweg"@sjn .
-```
-
-### 10) Is it possible that the same person appears under different names?
-
-```sparql
-PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+"The Wronged"@en "Forweg"@sjn .</code></pre>
+<h4>10) Is it possible that the same person appears under different names?</h4>
+<pre><code class="language-sparql">PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?name1 ?name2 WHERE {
   ?a owl:sameAs ?b .
   ?a rdfs:label ?name1 .
   ?b rdfs:label ?name2 .
   FILTER(?a != ?b)
-}
-```
-
-```text
-"Neithan"@sjn "Túrin"@en .
+}</code></pre>
+<pre><code class="language-text">"Neithan"@sjn "Túrin"@en .
 "The Wronged"@en "Túrin"@en .
 "Níniel"@sjn "Nienor"@sjn .
 "Níniel"@sjn "Mourning"@en .
@@ -397,82 +325,53 @@ SELECT ?name1 ?name2 WHERE {
 "Morgoth"@sjn "Melkor"@qya .
 "Morgoth"@sjn "He who arises in might"@en .
 "The Black Enemy"@en "Melkor"@qya .
-"The Black Enemy"@en "He who arises in might"@en .
-```
-
-### 11) What is the narrative arc of the story?
-
-```sparql
-PREFIX plot: &lt;https://w3id.org/narn/plot/&gt;
+"The Black Enemy"@en "He who arises in might"@en .</code></pre>
+<h4>11) What is the narrative arc of the story?</h4>
+<pre><code class="language-sparql">PREFIX plot: &lt;https://w3id.org/narn/plot/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?elementType ?elementLabel WHERE {
   ?story plot:hasNarrativeElement ?element .
   ?element a ?elementType .
   ?element rdfs:label ?elementLabel .
-}
-```
-
-```text
-&lt;https://w3id.org/narn/plot/Exposition&gt; "Exposition: Húrin's family and the curse of Morgoth"@en .
+}</code></pre>
+<pre><code class="language-text">&lt;https://w3id.org/narn/plot/Exposition&gt; "Exposition: Húrin's family and the curse of Morgoth"@en .
 &lt;https://w3id.org/narn/plot/FallingAction&gt; "Falling action: aftermath of revelation and deaths"@en .
 &lt;https://w3id.org/narn/plot/Resolution&gt; "Resolution: Deaths of Níniel and Turambar"@en .
 &lt;https://w3id.org/narn/plot/Climax&gt; "Climax: Slaying of Glaurung and truth revealed"@en .
 &lt;https://w3id.org/narn/plot/RisingAction&gt; "Rising action: Túrin's wanderings and tragedies"@en .
-&lt;https://w3id.org/narn/plot/IncitingIncident&gt; "Inciting incident: Túrin sent to Doriath"@en .
-```
-
-### 12) What caused an event?
-
-```sparql
-PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
+&lt;https://w3id.org/narn/plot/IncitingIncident&gt; "Inciting incident: Túrin sent to Doriath"@en .</code></pre>
+<h4>12) What caused an event?</h4>
+<pre><code class="language-sparql">PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?effectLabel ?causeLabel WHERE {
   ?effect evnt:isCausedBy ?cause .
   ?effect rdfs:label ?effectLabel .
   ?cause rdfs:label ?causeLabel .
-}
-```
-
-```text
-"Captivity of Húrin"@en "Nirnaeth Arnoediad"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Captivity of Húrin"@en "Nirnaeth Arnoediad"@sjn .
 "Captivity of Húrin"@en "Battle of Unnumbered Tears"@en .
 "Mîm curses Andróg"@en "Killing of Khîm"@en .
 "Death of Níniel"@en "The truth about Níniel is revealed"@en .
-"Exile of Túrin from Doriath"@en "Death of Saeros"@en .
-```
-
-### 13) Which subevents are part of a larger event?
-
-```sparql
-PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
+"Exile of Túrin from Doriath"@en "Death of Saeros"@en .</code></pre>
+<h4>13) Which subevents are part of a larger event?</h4>
+<pre><code class="language-sparql">PREFIX evnt: &lt;https://w3id.org/narn/event/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?parentLabel ?subLabel WHERE {
   ?parent evnt:hasSubEvent ?sub .
   ?parent rdfs:label ?parentLabel .
   ?sub rdfs:label ?subLabel .
-}
-```
-
-```text
-"Wars of Beleriand"@en "Nirnaeth Arnoediad"@sjn .
-"Wars of Beleriand"@en "Battle of Unnumbered Tears"@en .
-```
-
-
-### 14) Which characters are explicitly different?
-
-```sparql
-PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+}</code></pre>
+<pre><code class="language-text">"Wars of Beleriand"@en "Nirnaeth Arnoediad"@sjn .
+"Wars of Beleriand"@en "Battle of Unnumbered Tears"@en .</code></pre>
+<h4>14) Which characters are explicitly different?</h4>
+<pre><code class="language-sparql">PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 SELECT ?aLabel ?bLabel WHERE {
   ?a owl:differentFrom ?b .
   ?a rdfs:label ?aLabel .
   ?b rdfs:label ?bLabel .
-}
-```
-
-```text
-"Húrin"@sjn "Huor"@sjn .
+}</code></pre>
+<pre><code class="language-text">"Húrin"@sjn "Huor"@sjn .
 "Gurthang"@sjn "Anglachel"@sjn .
 "Iron of Death"@en "Anglachel"@sjn .
 "Nargothrond"@sjn "Menegroth"@sjn .
@@ -496,7 +395,5 @@ SELECT ?aLabel ?bLabel WHERE {
 "Túrin"@en "Thingol"@sjn .
 "Túrin"@en "Grey-cloak"@en .
 "Túrin"@en "Beleg"@sjn .
-"Morwen"@sjn "Rían"@sjn .
-```
-
-</span>
+"Morwen"@sjn "Rían"@sjn .</code></pre>
+</div>
